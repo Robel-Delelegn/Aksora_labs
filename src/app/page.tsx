@@ -1,12 +1,9 @@
-import { Compass, ShieldCheck, Workflow } from "lucide-react";
+import { ArrowRight, Compass, ShieldCheck, Workflow } from "lucide-react";
 
 import { ButtonLink } from "@/components/site/button-link";
 import { CtaSection } from "@/components/site/cta-section";
-import {
-  EditorialCarousel,
-  type EditorialCarouselItem,
-} from "@/components/site/editorial-carousel";
 import { FaqList } from "@/components/site/faq-list";
+import { ImmersiveHomeHero } from "@/components/site/immersive-home-hero";
 import { MediaComposition } from "@/components/site/media-composition";
 import { Reveal } from "@/components/site/reveal";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -33,108 +30,120 @@ export const metadata = buildMetadata({
 const trustPillars = [
   {
     title: "Senior-led",
-    body: "The important decisions stay close to product, design, and engineering.",
+    body: "Important product, design, and engineering decisions stay close to the actual work.",
     icon: Compass,
   },
   {
     title: "Visible progress",
-    body: "Scope, risks, and next steps stay easy to read from the start.",
+    body: "Scope, risk, and next steps stay clear instead of hiding in agency process fog.",
     icon: Workflow,
   },
   {
     title: "Built to last",
-    body: "Presentation quality and technical quality are treated as the same job.",
+    body: "The product is shaped to look strong now and remain maintainable after launch.",
     icon: ShieldCheck,
   },
 ];
 
 export default function HomePage() {
   const featuredServices = featuredServiceIndexes.map((index) => services[index]);
-  const marqueeLogos = [...clientLogoPlaceholders, ...clientLogoPlaceholders];
-  const marqueeLogosReverse = [
-    ...clientLogoPlaceholders.slice().reverse(),
-    ...clientLogoPlaceholders.slice().reverse(),
-  ];
-  const faqPreview = homeFaqs.slice(0, 4);
+  const featuredCaseStudy = caseStudies[0];
+  const secondaryCaseStudies = caseStudies.slice(1);
+  const processPreview = processSteps.slice(0, 4);
 
-  const serviceCards: EditorialCarouselItem[] = [
+  const heroSlides = [
     {
-      id: featuredServices[0].title,
-      eyebrow: "Custom websites",
-      title: "Websites that look like the company is in control.",
-      description: "Flagship marketing and corporate sites built to sharpen trust quickly.",
+      id: "websites",
+      label: "Flagship websites",
+      title: "Positioning, structure, and presentation that make the business look more established.",
+      description:
+        "For companies that need the site to earn trust inside the first few seconds.",
+      imageSrc: "/images/home-hero-cinematic-02-v1.png",
+      imageAlt: "Cinematic premium website and product design review environment",
+      detailA: "Messaging architecture and conversion-focused page structure.",
+      detailB: "A sharper public signal for buyers, stakeholders, and investors.",
+    },
+    {
+      id: "products",
+      label: "Web products",
+      title: "Browser-based products that feel controlled under real operational complexity.",
+      description:
+        "For dashboards, portals, and business software that need clarity as much as code quality.",
+      imageSrc: "/images/home-hero-cinematic-01-v1.png",
+      imageAlt: "Cinematic software strategy environment with product dashboards",
+      detailA: "Product UX, architecture, and delivery shaped as one system.",
+      detailB: "Useful for operations, reporting, admin, and customer-facing workflows.",
+    },
+    {
+      id: "systems",
+      label: "Internal systems",
+      title: "Operational software that improves visibility, cadence, and control.",
+      description:
+        "For teams that need internal tools to remove drag instead of creating more of it.",
+      imageSrc: "/images/home-hero-cinematic-03-v1.png",
+      imageAlt: "Cinematic internal systems and operations control environment",
+      detailA: "Workflow design that reduces manual work and reporting friction.",
+      detailB: "Built for businesses that need reliability behind the scenes as well as polish out front.",
+    },
+  ];
+
+  const serviceRows = [
+    {
+      service: featuredServices[0],
       imageSrc: "/images/service-website-editorial-v1.png",
       imageAlt: "Premium website presentation on a desktop monitor",
-      href: "/services",
-      linkLabel: "Explore websites",
+      stageVariant: "services" as const,
+      note: "The public-facing surface should make the business look stronger immediately.",
+      cta: "See website work",
     },
     {
-      id: featuredServices[1].title,
-      eyebrow: "Web products",
-      title: "Web apps that stay clear under real operational use.",
-      description: "Dashboards, portals, and multi-role products shaped for calm daily use.",
+      service: featuredServices[1],
       imageSrc: "/images/service-webapp-editorial-v1.png",
       imageAlt: "Web application dashboard review environment",
-      href: "/services",
-      linkLabel: "Explore web apps",
+      stageVariant: "work" as const,
+      note: "The product layer should stay readable when the workflow gets more complex.",
+      cta: "See product work",
     },
     {
-      id: featuredServices[2].title,
-      eyebrow: "Mobile products",
-      title: "Mobile experiences that feel deliberate, not improvised.",
-      description: "Customer and operational apps designed to work in the real conditions they live in.",
+      service: featuredServices[2],
       imageSrc: "/images/service-mobile-editorial-v1.png",
-      imageAlt: "Mobile app presentation on phone and tablet",
-      href: "/services",
-      linkLabel: "Explore mobile apps",
+      imageAlt: "Mobile app review on premium devices",
+      stageVariant: "contact" as const,
+      note: "Mobile software should feel focused, fast, and usable in real contexts.",
+      cta: "See mobile work",
     },
     {
-      id: featuredServices[3].title,
-      eyebrow: "Internal systems",
-      title: "Internal platforms that remove drag and add visibility.",
-      description: "Operational software for businesses that need cleaner process, reporting, and control.",
+      service: featuredServices[3],
       imageSrc: "/images/service-systems-editorial-v1.png",
-      imageAlt: "Enterprise systems and workflow operations environment",
-      href: "/services",
-      linkLabel: "Explore systems",
+      imageAlt: "Enterprise workflow and systems environment",
+      stageVariant: "process" as const,
+      note: "Internal systems should lower operational drag and improve visibility at the same time.",
+      cta: "See systems work",
     },
   ];
 
-  const workCards: EditorialCarouselItem[] = caseStudies.map((caseStudy) => ({
-    id: caseStudy.slug,
-    eyebrow: caseStudy.badge,
-    title: caseStudy.title,
-    description: caseStudy.summary,
-    imageSrc:
-      caseStudy.industry === "Finance"
-        ? "/images/operations-control-editorial-v1.png"
-        : caseStudy.industry === "Healthcare"
-          ? "/images/hero-studio-editorial-v1.png"
-          : "/images/service-systems-editorial-v1.png",
-    imageAlt: caseStudy.title,
-    href: `/work/${caseStudy.slug}`,
-    linkLabel: "View case study",
-    meta: `${caseStudy.clientType} · ${caseStudy.industry}`,
-  }));
-
-  const processCards: EditorialCarouselItem[] = processSteps.slice(0, 4).map((step, index) => ({
-    id: step.title,
-    eyebrow: `Step ${index + 1}`,
-    title: step.title,
-    description: step.description,
-    imageSrc:
-      index === 0
-        ? "/images/strategy-wall-editorial-v1.png"
-        : index === 1
-          ? "/images/process-artifacts-editorial-v1.png"
-          : index === 2
-            ? "/images/service-website-editorial-v1.png"
-            : "/images/service-systems-editorial-v1.png",
-    imageAlt: step.title,
-    href: "/process",
-    linkLabel: "See the process",
-    meta: step.outputs.slice(0, 2).join(" · "),
-  }));
+  const processCards = [
+    {
+      step: processPreview[0],
+      imageSrc: "/images/strategy-wall-editorial-v1.png",
+      imageAlt: processPreview[0].title,
+    },
+    {
+      step: processPreview[1],
+      imageSrc: "/images/process-artifacts-editorial-v1.png",
+      imageAlt: processPreview[1].title,
+    },
+    {
+      step: processPreview[2],
+      imageSrc: "/images/service-website-editorial-v1.png",
+      imageAlt: processPreview[2].title,
+    },
+    {
+      step: processPreview[3],
+      imageSrc: "/images/operations-control-editorial-v1.png",
+      imageAlt: processPreview[3].title,
+    },
+  ];
 
   return (
     <>
@@ -161,268 +170,310 @@ export default function HomePage() {
         ]}
       />
 
-      <section className="editorial-frame border-b border-black/10">
-        <div className="relative mx-auto w-full max-w-[1760px] px-5 py-8 sm:px-6 lg:px-10 lg:py-12">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,0.78fr)_minmax(620px,1.22fr)] xl:items-stretch">
-            <Reveal variant="left">
-              <div className="relative z-10 flex h-full flex-col justify-between gap-10 py-5 lg:py-8">
-                <div className="max-w-4xl">
-                  <p className="text-[0.74rem] font-semibold tracking-[0.26em] text-white/78 uppercase">
-                    {homeHero.eyebrow}
-                  </p>
-                  <h1 className="mt-6 max-w-5xl text-balance font-[family:var(--font-display)] text-[3.8rem] font-normal leading-[0.88] tracking-[-0.035em] text-white sm:text-[5rem] xl:text-[6.35rem]">
-                    {homeHero.title}
-                  </h1>
-                  <p className="mt-6 max-w-2xl text-pretty text-[1.02rem] leading-8 text-white/76 sm:text-[1.12rem]">
-                    {homeHero.description}
-                  </p>
+      <ImmersiveHomeHero
+        eyebrow={homeHero.eyebrow}
+        title={homeHero.title}
+        description={homeHero.description}
+        primaryCta={homeHero.primaryCta}
+        secondaryCta={homeHero.secondaryCta}
+        proofPoints={homeHero.proofPoints}
+        slides={heroSlides}
+        logos={clientLogoPlaceholders}
+      />
+
+      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Capabilities"
+            title="What serious teams usually hire Aksora Labs to handle."
+            description="Use the home page to understand the shape of the work fast. Then go deeper where it matters."
+            align="center"
+            tone="light"
+          />
+        </Reveal>
+
+        <div className="mt-14 space-y-20">
+          {serviceRows.map((item, index) => (
+            <Reveal key={item.service.title} delay={index * 90}>
+              <article className="grid gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <MediaComposition
+                    imageSrc={item.imageSrc}
+                    imageAlt={item.imageAlt}
+                    imagePosition="object-center"
+                    stageVariant={item.stageVariant}
+                    compactStage
+                    note={item.note}
+                    notePlacement="bottom-left"
+                    stageWidthClassName="w-[38%] min-w-[170px] max-w-[240px]"
+                    heightClassName="h-[340px] sm:h-[420px] xl:h-[500px]"
+                    className="border border-white/10 bg-white/4"
+                  />
+                </div>
+                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                  <span className="inline-flex rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[0.72rem] font-semibold tracking-[0.18em] text-white/72 uppercase">
+                    {item.service.title}
+                  </span>
+                  <h3 className="mt-6 max-w-xl font-[family:var(--font-body-bold)] text-[2.45rem] leading-[0.98] tracking-[-0.04em] text-white sm:text-[3rem]">
+                    {item.service.description}
+                  </h3>
                   <div className="mt-8 flex flex-wrap gap-3">
-                    {homeHero.proofPoints.map((point) => (
+                    {item.service.deliverables.map((deliverable) => (
                       <span
-                        key={point}
-                        className="inline-flex items-center border border-white/16 bg-white/8 px-3 py-2 text-[0.72rem] font-semibold tracking-[0.18em] text-white/84 uppercase backdrop-blur-sm"
+                        key={deliverable}
+                        className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-[0.78rem] font-medium text-white/68"
                       >
-                        {point}
+                        {deliverable}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <ButtonLink href={homeHero.primaryCta.href}>
-                      {homeHero.primaryCta.label}
-                    </ButtonLink>
+                  <div className="mt-8">
                     <ButtonLink
-                      href={homeHero.secondaryCta.href}
+                      href="/services"
                       variant="secondary"
-                      className="border-white bg-transparent text-white hover:bg-white hover:text-slate-950"
+                      className="border-white/16 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
                     >
-                      {homeHero.secondaryCta.label}
+                      {item.cta}
                     </ButtonLink>
                   </div>
                 </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </SectionShell>
 
-                <div className="grid gap-0 border-t border-white/14 lg:grid-cols-3">
-                  {homeHero.calloutItems.map((item, index) => (
-                    <div
-                      key={item}
-                      className="border-b border-white/10 py-5 lg:border-b-0 lg:border-r lg:px-5 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
-                    >
-                      <p className="text-[0.7rem] font-semibold tracking-[0.2em] text-white/46 uppercase">
-                        {`0${index + 1}`}
+      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+        <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Selected Work"
+              title="A case study should make judgment visible."
+              description="Problem, product response, and business impact should be easy to assess without reading a wall of explanation."
+              tone="light"
+            />
+          </Reveal>
+          <Reveal variant="right" delay={100}>
+            <div className="flex lg:justify-end">
+              <ButtonLink
+                href="/work"
+                variant="secondary"
+                className="border-white/14 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
+              >
+                View Our Work
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
+
+        <Reveal variant="up" delay={140}>
+          <article className="mt-12 overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.03] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
+            <div className="grid gap-0 xl:grid-cols-[1.02fr_0.98fr]">
+              <MediaComposition
+                imageSrc="/images/operations-control-editorial-v1.png"
+                imageAlt={featuredCaseStudy.title}
+                imagePosition="object-center"
+                stageVariant="work"
+                compactStage
+                note={featuredCaseStudy.clientType}
+                notePlacement="bottom-left"
+                stageWidthClassName="w-[35%] min-w-[160px] max-w-[220px]"
+                heightClassName="h-[340px] sm:h-[460px] xl:h-full"
+                className="border-none bg-transparent p-0"
+              />
+              <div className="flex flex-col justify-between p-7 sm:p-10">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[0.72rem] font-semibold tracking-[0.18em] text-white/72 uppercase">
+                      {featuredCaseStudy.badge}
+                    </span>
+                    <span className="text-sm text-white/46">
+                      {featuredCaseStudy.industry}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 max-w-xl font-[family:var(--font-body-bold)] text-[2.45rem] leading-[0.98] tracking-[-0.04em] text-white sm:text-[3rem]">
+                    {featuredCaseStudy.title}
+                  </h3>
+                  <p className="mt-5 max-w-2xl text-[1rem] leading-8 text-white/68">
+                    {featuredCaseStudy.summary}
+                  </p>
+                </div>
+
+                <div className="mt-8 grid gap-4 border-y border-white/10 py-6 sm:grid-cols-3">
+                  {featuredCaseStudy.metrics.map((metric) => (
+                    <div key={metric.label}>
+                      <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/42 uppercase">
+                        {metric.label}
                       </p>
-                      <p className="mt-3 max-w-xs text-[0.96rem] leading-7 text-white/82">
-                        {item}
+                      <p className="mt-2 text-sm leading-6 text-white/82">
+                        {metric.value}
                       </p>
                     </div>
                   ))}
                 </div>
+
+                <ul className="mt-7 space-y-3 text-[0.98rem] leading-7 text-white/72">
+                  {featuredCaseStudy.outcomes.map((outcome) => (
+                    <li key={outcome} className="flex gap-3">
+                      <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#d8b6bc]" />
+                      <span>{outcome}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8">
+                  <ButtonLink
+                    href={`/work/${featuredCaseStudy.slug}`}
+                    variant="secondary"
+                    className="border-white/14 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
+                  >
+                    View case study
+                  </ButtonLink>
+                </div>
               </div>
-            </Reveal>
-
-            <Reveal variant="right" delay={120}>
-              <MediaComposition
-                imageSrc="/images/hero-studio-editorial-v1.png"
-                imageAlt="Premium studio workspace with product interfaces"
-                imagePosition="object-[68%_center]"
-                stageVariant="hero"
-                note="Designed to make the business look stronger before the first call even starts."
-                notePlacement="top-left"
-                className="h-full min-h-[580px] border border-white/14 bg-black/12 sm:min-h-[680px]"
-                heightClassName="h-[580px] sm:h-[680px] xl:h-full"
-              />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-[var(--border)] bg-[#efe8de]">
-        <div className="mx-auto grid w-full max-w-[1760px] gap-4 overflow-hidden px-5 py-5 sm:px-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:px-10">
-          <p className="text-[0.72rem] font-semibold tracking-[0.22em] text-[var(--accent)] uppercase">
-            Built for
-          </p>
-          <div className="overflow-hidden space-y-3">
-            <div className="marquee-track flex min-w-max items-center gap-10 lg:gap-14 motion-reduce:animate-none">
-              {marqueeLogos.map((logo, index) => (
-                <span
-                  key={`${logo}-${index}`}
-                  className="block text-[0.94rem] font-semibold tracking-[0.14em] text-slate-700 uppercase"
-                >
-                  {logo}
-                </span>
-              ))}
             </div>
-            <div className="marquee-track marquee-track--reverse flex min-w-max items-center gap-10 lg:gap-14 motion-reduce:animate-none">
-              {marqueeLogosReverse.map((logo, index) => (
-                <span
-                  key={`${logo}-reverse-${index}`}
-                  className="block text-[0.94rem] font-semibold tracking-[0.14em] text-slate-500 uppercase"
-                >
-                  {logo}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-black/20 bg-[#1a223d] py-16 text-white sm:py-20">
-        <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-6 lg:px-10">
-          <div className="grid gap-6 border-b border-white/18 pb-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <Reveal>
-              <SectionHeading
-                eyebrow="Capabilities"
-                title="What serious teams bring to Aksora Labs."
-                description="The main categories are simple. The standard inside each one is not."
-                tone="light"
-              />
-            </Reveal>
-            <Reveal variant="right" delay={80}>
-              <div className="max-w-2xl lg:justify-self-end">
-                <p className="text-[1rem] leading-8 text-white/76">
-                  The point is not to present a service table. The point is to
-                  make the kind of work obvious at a glance.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal variant="up" delay={120}>
-            <div className="mt-10">
-              <EditorialCarousel
-                items={serviceCards}
-                theme="dark"
-                variant="overlay"
-                columns={{ tablet: 2, desktop: 4 }}
-              />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
-          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
-            <Reveal>
-              <SectionHeading
-                eyebrow="Selected Work"
-                title="A few examples of what the standard looks like."
-                description="Enough detail to judge the thinking quickly."
-              />
-            </Reveal>
-            <Reveal variant="right" delay={80}>
-              <div className="flex lg:justify-end">
-                <ButtonLink href="/work" variant="secondary">
-                  View all work
-                </ButtonLink>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        <Reveal variant="up" delay={120}>
-          <div className="mt-10">
-            <EditorialCarousel
-              items={workCards}
-              theme="light"
-              variant="stacked"
-              columns={{ tablet: 2, desktop: 3 }}
-            />
-          </div>
+          </article>
         </Reveal>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          {secondaryCaseStudies.map((item, index) => (
+            <Reveal key={item.slug} delay={160 + index * 70}>
+              <a
+                href={`/work/${item.slug}`}
+                className="group block rounded-[28px] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]"
+              >
+                <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-white/44 uppercase">
+                  {item.badge}
+                </p>
+                <h4 className="mt-4 font-[family:var(--font-heading)] text-[2rem] leading-[1.02] text-white">
+                  {item.title}
+                </h4>
+                <p className="mt-4 max-w-2xl text-[0.98rem] leading-7 text-white/64">
+                  {item.summary}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-white/78">
+                  Open case study
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
       </SectionShell>
 
-      <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
-          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
-            <Reveal>
-              <SectionHeading
-                eyebrow="Process"
-                title="A process buyers can read before the build starts."
-                description="The structure should lower uncertainty, not add more of it."
-              />
-            </Reveal>
-            <Reveal variant="right" delay={80}>
-              <div className="max-w-2xl lg:justify-self-end">
-                <p className="text-[1rem] leading-8 text-slate-600">
-                  Clear discovery, sharp product direction, disciplined design,
-                  and a build cadence that stays visible.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        <Reveal variant="up" delay={120}>
-          <div className="mt-10">
-            <EditorialCarousel
-              items={processCards}
-              theme="warm"
-              variant="stacked"
-              columns={{ tablet: 2, desktop: 4 }}
-            />
-          </div>
+      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Process"
+            title="A delivery model designed to keep momentum visible."
+            description="The process should make the engagement easier to trust before the work gets expensive."
+            align="center"
+            tone="light"
+          />
         </Reveal>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+          {processCards.map((item, index) => (
+            <Reveal key={item.step.title} delay={index * 80}>
+              <article className="overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))]">
+                <div className="relative aspect-[1.1/0.78] overflow-hidden">
+                  <MediaComposition
+                    imageSrc={item.imageSrc}
+                    imageAlt={item.imageAlt}
+                    compactStage
+                    stageVariant={index === 0 ? "services" : index === 1 ? "process" : index === 2 ? "work" : "contact"}
+                    stageWidthClassName="w-[36%] min-w-[120px] max-w-[170px]"
+                    heightClassName="h-full"
+                    className="h-full border-none bg-transparent p-0"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/42 uppercase">
+                    {`Step ${index + 1}`}
+                  </p>
+                  <h3 className="mt-4 font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-white">
+                    {item.step.title}
+                  </h3>
+                  <p className="mt-4 text-[0.95rem] leading-7 text-white/64">
+                    {item.step.description}
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {item.step.outputs.map((output) => (
+                      <span
+                        key={output}
+                        className="rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-[0.72rem] font-medium text-white/66"
+                      >
+                        {output}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </SectionShell>
 
-      <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
-          <div className="grid gap-8 xl:grid-cols-[0.64fr_1.36fr] xl:items-start">
-            <Reveal>
-              <SectionHeading
-                eyebrow="Why Aksora"
-                title="Clear in scope. Calm in delivery. Solid after launch."
-                description="The trust signal should come from how the work is organized."
-              />
-            </Reveal>
+      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+        <div className="grid gap-12 xl:grid-cols-[0.7fr_1.3fr] xl:items-start">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Why Aksora"
+              title="Trust should come from how the work is organized."
+              description="The website should make the operating standard legible, not just say that it exists."
+              tone="light"
+            />
 
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="mt-10 space-y-5">
               {trustPillars.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
-                  <Reveal key={item.title} variant="up" delay={index * 80}>
-                    <article className="editorial-note-panel p-7">
-                      <span className="icon-emblem">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <h3 className="relative mt-6 font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-slate-950">
-                        {item.title}
-                      </h3>
-                      <p className="relative mt-4 text-[0.98rem] leading-8 text-slate-600">
-                        {item.body}
-                      </p>
+                  <Reveal key={item.title} delay={index * 70}>
+                    <article className="rounded-[24px] border border-white/10 bg-white/[0.03] p-6">
+                      <div className="flex items-start gap-4">
+                        <span className="icon-emblem border-white/14 bg-white/8 text-white">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <div>
+                          <h3 className="font-[family:var(--font-heading)] text-[1.8rem] leading-none text-white">
+                            {item.title}
+                          </h3>
+                          <p className="mt-3 text-[0.98rem] leading-7 text-white/66">
+                            {item.body}
+                          </p>
+                        </div>
+                      </div>
                     </article>
                   </Reveal>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </SectionShell>
-
-      <SectionShell className="pt-20">
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-          <Reveal>
-            <SectionHeading
-              eyebrow="FAQ"
-              title="A few questions buyers usually want answered early."
-              description="Keep the answers direct."
-            />
           </Reveal>
-          <Reveal variant="up" delay={100}>
-            <div className="border-t border-[var(--border-strong)] pt-2">
-              <FaqList items={faqPreview} />
+
+          <Reveal variant="up" delay={120}>
+            <div className="rounded-[32px] border border-white/10 bg-white/[0.03] p-7 sm:p-9">
+              <SectionHeading
+                eyebrow="FAQ"
+                title="A few questions buyers usually want answered early."
+                description="Clear answers reduce friction. They also signal maturity."
+                tone="light"
+              />
+              <div className="mt-8">
+                <FaqList items={homeFaqs} tone="dark" />
+              </div>
             </div>
           </Reveal>
         </div>
       </SectionShell>
 
-      <SectionShell className="pb-8 pt-24">
+      <SectionShell className="border-t border-white/10 bg-[#050608] pb-8 pt-24">
         <CtaSection
           eyebrow="Next Step"
           title="Bring the website, product, or system up to the level the business needs."
           description="Use the first conversation to clarify the opportunity, the risk, and the right delivery path."
-          imageSrc="/images/strategy-wall-editorial-v1.png"
-          imageAlt="Premium product strategy workspace"
+          imageSrc="/images/home-hero-cinematic-01-v1.png"
+          imageAlt="Premium software strategy environment"
           stageVariant="contact"
           points={[
             "Pressure-test scope before the wrong build expands",

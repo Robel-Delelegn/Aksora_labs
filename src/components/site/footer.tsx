@@ -10,7 +10,7 @@ import {
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-[var(--accent)] bg-[#11100f] text-white">
+    <footer className="border-t border-[var(--accent)] bg-[#11100f] text-white">
       <div className="mx-auto w-full max-w-[1760px] px-5 py-16 sm:px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_0.72fr_0.78fr]">
           <div>

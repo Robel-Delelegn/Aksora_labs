@@ -7,7 +7,11 @@ import { Menu, X } from "lucide-react";
 import { ButtonLink } from "@/components/site/button-link";
 import { mainNav } from "@/lib/site-data";
 
-export function MobileNav() {
+type MobileNavProps = {
+  inverse?: boolean;
+};
+
+export function MobileNav({ inverse = false }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -18,12 +22,16 @@ export function MobileNav() {
     };
   }, [isOpen]);
 
+  const triggerClassName = inverse
+    ? "border-white/18 bg-white/6 text-white backdrop-blur"
+    : "border-[var(--border-strong)] bg-white text-slate-900";
+
   return (
     <>
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="inline-flex h-11 w-11 items-center justify-center border border-[var(--border-strong)] bg-white text-slate-900 lg:hidden"
+        className={`inline-flex h-11 w-11 items-center justify-center border lg:hidden ${triggerClassName}`}
         aria-label="Open navigation menu"
       >
         <Menu className="h-5 w-5" />
