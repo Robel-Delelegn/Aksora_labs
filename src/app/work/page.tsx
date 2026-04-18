@@ -37,33 +37,35 @@ export default function WorkPage() {
   }));
 
   return (
-    <>
+    <div className="site-dark-page">
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Selected Work"
-          title="Case studies built to show judgment, not just finished screens."
+          title="Case studies that show the problem, the response, and the result."
           description="Aksora Labs presents work through problem, solution, delivery scope, and business impact."
           badges={["Problem", "Build", "Outcome"]}
+          tone="dark"
           stageVariant="work"
           mediaSrc="/images/operations-control-editorial-v1.png"
           mediaAlt="Enterprise operations scene with layered dashboards"
-          mediaNote="A strong case study shows business context, not just finished screens."
+          mediaNote="Business context, delivery scope, and measurable impact."
         />
       </SectionShell>
 
       <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Portfolio"
-            title="Examples that make the standard easier to judge."
+            title="Examples across finance, healthcare, and operations."
             description="Enough context to understand the business problem, the product response, and the outcome."
+            tone="light"
           />
         </div>
 
         <div className="mt-10">
           <EditorialCarousel
             items={workCards}
-            theme="light"
+            theme="dark"
             variant="stacked"
             columns={{ tablet: 2, desktop: 3 }}
           />
@@ -71,10 +73,11 @@ export default function WorkPage() {
       </SectionShell>
 
       <SectionShell className="pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="What Strong Work Signals"
-            title="Fast evaluation for serious buyers."
+            title="What strong work makes clear."
+            tone="light"
           />
         </div>
 
@@ -93,11 +96,14 @@ export default function WorkPage() {
               body: "What changed for users, operations, or the business.",
             },
           ].map((item) => (
-            <article key={item.title} className="editorial-note-panel p-8">
-              <h3 className="relative font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-slate-950">
+            <article
+              key={item.title}
+              className="editorial-note-panel editorial-note-panel--dark p-8"
+            >
+              <h3 className="relative font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-white">
                 {item.title}
               </h3>
-              <p className="relative mt-4 text-[0.98rem] leading-8 text-slate-600">
+              <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
                 {item.body}
               </p>
             </article>
@@ -108,18 +114,18 @@ export default function WorkPage() {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Next Step"
-          title="If the work needs to support serious positioning, the execution has to do the same."
-          description="The portfolio should make capability easier to assess and easier to trust."
+          title="Execution matters as much as the idea."
+          description="The portfolio shows how Aksora Labs approaches product decisions, delivery, and business impact."
           imageSrc="/images/operations-control-editorial-v1.png"
           imageAlt="Enterprise software operations environment"
           stageVariant="work"
           points={[
-            "Show the problem, not just the finish",
-            "Make scope and outcomes easy to scan",
-            "Present capability in a premium, credible way",
+            "Business context and product response",
+            "Clear scope, outcomes, and delivery decisions",
+            "Premium presentation with substance behind it",
           ]}
         />
       </SectionShell>
-    </>
+    </div>
   );
 }

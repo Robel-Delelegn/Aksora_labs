@@ -12,8 +12,7 @@ type HomeHeroSlide = {
   description: string;
   imageSrc: string;
   imageAlt: string;
-  detailA: string;
-  detailB: string;
+  highlights: string[];
 };
 
 type ImmersiveHomeHeroProps = {
@@ -151,7 +150,7 @@ export function ImmersiveHomeHero({
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/46 uppercase">
-                  Current Focus
+                  Featured Capability
                 </p>
                 <p className="mt-2 text-[1.35rem] font-semibold leading-tight text-white">
                   {activeSlide.label}
@@ -176,27 +175,19 @@ export function ImmersiveHomeHero({
             <p className="mt-4 text-[0.98rem] leading-7 text-white/72">
               {activeSlide.title}
             </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-black/18 px-4 py-3">
-                <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/42 uppercase">
-                  Strength
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/82">
-                  {activeSlide.detailA}
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/18 px-4 py-3">
-                <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/42 uppercase">
-                  Signal
-                </p>
-                <p className="mt-2 text-sm leading-6 text-white/82">
-                  {activeSlide.detailB}
-                </p>
-              </div>
-            </div>
-            <p className="mt-5 text-sm leading-6 text-white/56">
+            <p className="mt-4 text-sm leading-6 text-white/56">
               {activeSlide.description}
             </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {activeSlide.highlights.map((highlight) => (
+                <span
+                  key={highlight}
+                  className="inline-flex rounded-full border border-white/10 bg-black/18 px-3 py-2 text-[0.72rem] font-semibold tracking-[0.08em] text-white/80"
+                >
+                  {highlight}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

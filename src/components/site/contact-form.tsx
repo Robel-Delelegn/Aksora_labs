@@ -21,12 +21,21 @@ const defaultValues: ContactFormValues = {
 
 type ErrorState = Partial<Record<keyof ContactFormValues, string>>;
 
-export function ContactForm() {
+type ContactFormProps = {
+  tone?: "light" | "dark";
+  className?: string;
+};
+
+export function ContactForm({
+  tone = "light",
+  className = "",
+}: ContactFormProps) {
   const [values, setValues] = useState<ContactFormValues>(defaultValues);
   const [errors, setErrors] = useState<ErrorState>({});
   const [isPending, setIsPending] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [serverMessage, setServerMessage] = useState("");
+  const isDark = tone === "dark";
 
   function updateValue<K extends keyof ContactFormValues>(
     key: K,
@@ -101,14 +110,32 @@ export function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <div className="border-y border-emerald-200 bg-emerald-50/70 py-8">
+      <div
+        className={
+          isDark
+            ? "rounded-[24px] border border-emerald-400/24 bg-emerald-500/8 p-6 sm:p-8"
+            : "border-y border-emerald-200 bg-emerald-50/70 py-8"
+        }
+      >
         <div className="flex items-start gap-4">
-          <CheckCircle2 className="mt-1 h-6 w-6 text-emerald-700" />
+          <CheckCircle2
+            className={`mt-1 h-6 w-6 ${
+              isDark ? "text-emerald-300" : "text-emerald-700"
+            }`}
+          />
           <div>
-            <h3 className="text-2xl font-semibold text-slate-950">
+            <h3
+              className={`text-2xl font-semibold ${
+                isDark ? "text-white" : "text-slate-950"
+              }`}
+            >
               Inquiry received
             </h3>
-            <p className="mt-3 max-w-xl text-pretty leading-7 text-slate-700">
+            <p
+              className={`mt-3 max-w-xl text-pretty leading-7 ${
+                isDark ? "text-white/72" : "text-slate-700"
+              }`}
+            >
               Thanks for reaching out. The project brief has been captured. If
               the fit is strong, the next step is a focused discovery
               conversation around goals, constraints, and delivery direction.
@@ -122,11 +149,16 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-y border-[var(--border-strong)] bg-white/55 py-6 sm:py-8"
+      className={
+        isDark
+          ? `space-y-6 ${className}`.trim()
+          : `border-y border-[var(--border-strong)] bg-white/55 py-6 sm:py-8 ${className}`.trim()
+      }
       noValidate
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
+          tone={tone}
           label="Name"
           name="name"
           value={values.name}
@@ -137,6 +169,7 @@ export function ContactForm() {
           required
         />
         <Field
+          tone={tone}
           label="Email"
           name="email"
           value={values.email}
@@ -148,6 +181,7 @@ export function ContactForm() {
           required
         />
         <Field
+          tone={tone}
           label="Company"
           name="company"
           value={values.company ?? ""}
@@ -157,6 +191,7 @@ export function ContactForm() {
           autoComplete="organization"
         />
         <SelectField
+          tone={tone}
           label="Project type"
           name="projectType"
           value={values.projectType}
@@ -173,6 +208,7 @@ export function ContactForm() {
           required
         />
         <SelectField
+          tone={tone}
           label="Budget range"
           name="budget"
           value={values.budget ?? ""}
@@ -187,6 +223,7 @@ export function ContactForm() {
           ]}
         />
         <SelectField
+          tone={tone}
           label="Timeline"
           name="timeline"
           value={values.timeline ?? ""}
@@ -204,7 +241,9 @@ export function ContactForm() {
       <div className="mt-5">
         <label
           htmlFor="message"
-          className="mb-2 block text-[0.72rem] font-semibold tracking-[0.18em] text-slate-500 uppercase"
+          className={`mb-2 block text-[0.72rem] font-semibold tracking-[0.18em] uppercase ${
+            isDark ? "text-white/60" : "text-slate-500"
+          }`}
         >
           Project brief
         </label>
@@ -214,8 +253,16 @@ export function ContactForm() {
           rows={6}
           value={values.message}
           onChange={(event) => updateValue("message", event.target.value)}
-            className={`w-full border-x-0 border-b border-t-0 bg-transparent px-0 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[var(--accent)] ${
-            errors.message ? "border-red-300" : "border-slate-300"
+          className={`w-full outline-none transition ${
+            isDark
+              ? "rounded-[18px] border bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-white/34 focus:border-[var(--accent)]"
+              : "border-x-0 border-b border-t-0 bg-transparent px-0 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[var(--accent)]"
+          } ${
+            errors.message
+              ? "border-red-300"
+              : isDark
+                ? "border-white/12"
+                : "border-slate-300"
           }`}
           placeholder="What are you building, who is it for, and what matters most right now?"
           aria-invalid={Boolean(errors.message)}
@@ -223,7 +270,12 @@ export function ContactForm() {
           required
         />
         {errors.message ? (
-          <p id="message-error" className="mt-2 text-sm text-red-600">
+          <p
+            id="message-error"
+            className={`mt-2 text-sm ${
+              isDark ? "text-[#ff9e9e]" : "text-red-600"
+            }`}
+          >
             {errors.message}
           </p>
         ) : null}
@@ -242,20 +294,39 @@ export function ContactForm() {
       </div>
 
       {serverMessage ? (
-        <p className="mt-4 text-sm text-red-600" aria-live="polite">
+        <p
+          className={`mt-4 text-sm ${
+            isDark ? "text-[#ff9e9e]" : "text-red-600"
+          }`}
+          aria-live="polite"
+        >
           {serverMessage}
         </p>
       ) : null}
 
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-xl text-sm leading-6 text-slate-500">
+      <div
+        className={
+          isDark
+            ? "mt-6 space-y-4"
+            : "mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        }
+      >
+        <p
+          className={`max-w-xl text-sm leading-6 ${
+            isDark ? "text-white/56" : "text-slate-500"
+          }`}
+        >
           Share the key context. Aksora Labs will review the brief and respond
           with the right next step.
         </p>
         <button
           type="submit"
           disabled={isPending}
-          className="button-sheen inline-flex min-h-11 items-center justify-center gap-2 border border-[var(--accent)] bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)] disabled:cursor-not-allowed disabled:opacity-70"
+          className={`button-sheen inline-flex min-h-11 items-center justify-center gap-2 border px-5 py-3 text-sm font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-70 ${
+            isDark
+              ? "w-full rounded-[16px] border-[var(--accent)] bg-[linear-gradient(90deg,rgba(139,35,50,0.96),rgba(164,64,94,0.96))] hover:border-[var(--accent-strong)] hover:bg-[linear-gradient(90deg,rgba(109,27,40,0.98),rgba(139,35,50,0.98))]"
+              : "border-[var(--accent)] bg-[var(--accent)] hover:bg-[var(--accent-strong)]"
+          }`}
         >
           {isPending ? "Submitting..." : "Request a discovery call"}
           <ArrowRight className="h-4 w-4" />
@@ -266,6 +337,7 @@ export function ContactForm() {
 }
 
 type FieldProps = {
+  tone: "light" | "dark";
   label: string;
   name: string;
   value: string;
@@ -278,6 +350,7 @@ type FieldProps = {
 };
 
 function Field({
+  tone,
   label,
   name,
   value,
@@ -288,11 +361,15 @@ function Field({
   type = "text",
   required = false,
 }: FieldProps) {
+  const isDark = tone === "dark";
+
   return (
     <div>
       <label
         htmlFor={name}
-        className="mb-2 block text-[0.72rem] font-semibold tracking-[0.18em] text-slate-500 uppercase"
+        className={`mb-2 block text-[0.72rem] font-semibold tracking-[0.18em] uppercase ${
+          isDark ? "text-white/60" : "text-slate-500"
+        }`}
       >
         {label}
       </label>
@@ -304,15 +381,28 @@ function Field({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className={`w-full border-x-0 border-b border-t-0 bg-transparent px-0 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[var(--accent)] ${
-          error ? "border-red-300" : "border-slate-300"
+        className={`w-full outline-none transition ${
+          isDark
+            ? "rounded-[16px] border bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-white/34 focus:border-[var(--accent)]"
+            : "border-x-0 border-b border-t-0 bg-transparent px-0 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[var(--accent)]"
+        } ${
+          error
+            ? "border-red-300"
+            : isDark
+              ? "border-white/12"
+              : "border-slate-300"
         }`}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${name}-error` : undefined}
         required={required}
       />
       {error ? (
-        <p id={`${name}-error`} className="mt-2 text-sm text-red-600">
+        <p
+          id={`${name}-error`}
+          className={`mt-2 text-sm ${
+            isDark ? "text-[#ff9e9e]" : "text-red-600"
+          }`}
+        >
           {error}
         </p>
       ) : null}
@@ -321,6 +411,7 @@ function Field({
 }
 
 type SelectFieldProps = {
+  tone: "light" | "dark";
   label: string;
   name: string;
   value: string;
@@ -331,6 +422,7 @@ type SelectFieldProps = {
 };
 
 function SelectField({
+  tone,
   label,
   name,
   value,
@@ -339,11 +431,15 @@ function SelectField({
   error,
   required = false,
 }: SelectFieldProps) {
+  const isDark = tone === "dark";
+
   return (
     <div>
       <label
         htmlFor={name}
-        className="mb-2 block text-[0.72rem] font-semibold tracking-[0.18em] text-slate-500 uppercase"
+        className={`mb-2 block text-[0.72rem] font-semibold tracking-[0.18em] uppercase ${
+          isDark ? "text-white/60" : "text-slate-500"
+        }`}
       >
         {label}
       </label>
@@ -352,9 +448,18 @@ function SelectField({
         name={name}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className={`w-full border-x-0 border-b border-t-0 bg-transparent px-0 py-3 text-slate-900 outline-none transition focus:border-[var(--accent)] ${
-          error ? "border-red-300" : "border-slate-300"
+        className={`w-full outline-none transition ${
+          isDark
+            ? "rounded-[16px] border bg-white/[0.03] px-4 py-3.5 text-white focus:border-[var(--accent)]"
+            : "border-x-0 border-b border-t-0 bg-transparent px-0 py-3 text-slate-900 focus:border-[var(--accent)]"
+        } ${
+          error
+            ? "border-red-300"
+            : isDark
+              ? "border-white/12"
+              : "border-slate-300"
         }`}
+        style={isDark ? { colorScheme: "dark" } : undefined}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${name}-error` : undefined}
         required={required}
@@ -367,7 +472,12 @@ function SelectField({
         ))}
       </select>
       {error ? (
-        <p id={`${name}-error`} className="mt-2 text-sm text-red-600">
+        <p
+          id={`${name}-error`}
+          className={`mt-2 text-sm ${
+            isDark ? "text-[#ff9e9e]" : "text-red-600"
+          }`}
+        >
           {error}
         </p>
       ) : null}

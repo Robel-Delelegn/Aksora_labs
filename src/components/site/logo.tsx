@@ -41,7 +41,7 @@ export function Logo({
   return (
     <Link
       href={href}
-      className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-transparent"
+      className="logo-motion inline-flex items-center focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-transparent"
       aria-label="Aksora Labs home"
     >
       {content}

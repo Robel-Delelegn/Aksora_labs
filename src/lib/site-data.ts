@@ -6,6 +6,9 @@ export const siteConfig = {
     "Aksora Labs designs and builds premium websites, web apps, mobile apps, and internal systems for startups, SMEs, and enterprise teams that need serious execution.",
   url: "https://aksoralabs.com",
   email: "hello@aksoralabs.com",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "971500000000",
+  whatsappMessage:
+    "Hello Aksora Labs, I’d like to discuss a website or product project.",
   responseWindow: "Clear first response and discovery planning",
   location: "Remote-first, serving teams internationally",
   socialLinks: [
@@ -64,9 +67,9 @@ export const homeHero = {
   ],
   calloutTitle: "What Aksora Labs takes on",
   calloutItems: [
-    "Flagship websites that need to signal competence fast.",
-    "Products and platforms that need clarity and reliability.",
-    "Internal systems that remove drag and improve visibility.",
+    "Flagship websites built for stronger digital credibility.",
+    "Products and platforms designed for clarity and reliability.",
+    "Internal systems that reduce drag and improve visibility.",
   ],
 };
 
@@ -89,7 +92,7 @@ export const homeOverview = [
   {
     title: "Stewardship",
     description:
-      "Support the product after launch, not just the handoff.",
+      "Post-launch support, iteration, and maintenance.",
   },
 ];
 
@@ -127,7 +130,7 @@ export const services: Service[] = [
   {
     title: "Custom websites",
     description:
-      "Premium marketing and corporate websites built to signal competence and convert serious buyers.",
+      "Premium marketing and corporate websites built to strengthen credibility and convert qualified demand.",
     deliverables: [
       "Messaging architecture",
       "Editorial page design",
@@ -239,7 +242,7 @@ export const whyAksora = [
   },
   {
     title: "Design that signals competence",
-    description: "Presentation shapes trust before buyers read every line.",
+    description: "Presentation reinforces trust at first glance.",
   },
   {
     title: "Systems built for change",
@@ -287,7 +290,7 @@ export const processSteps: ProcessStep[] = [
   {
     title: "Support and extend",
     description:
-      "Improve the product deliberately instead of letting ad hoc requests drive the roadmap.",
+      "Improve the product with a deliberate roadmap, support plan, and next-phase priorities.",
     outputs: ["Improvement backlog", "Support coverage", "Scalable next-phase planning"],
   },
 ];
@@ -473,7 +476,7 @@ export const engagementModels = [
   {
     title: "Extend",
     description:
-      "For teams that need a premium partner to ship features, improve systems, and support growth without chaos.",
+      "For teams that need a premium partner to ship features, improve systems, and support growth with continuity.",
   },
 ];
 
@@ -482,7 +485,7 @@ export const deliveryPrinciples = [
   "Visible scope, milestones, and decision checkpoints",
   "Accessible, performance-aware frontend implementation",
   "Maintainable architecture and sensible documentation",
-  "Post-launch support without lock-in language",
+  "Post-launch support and clear handover",
 ];
 
 export const aboutPrinciples = [
@@ -494,7 +497,7 @@ export const aboutPrinciples = [
   {
     title: "Calm communication",
     description:
-      "Stakeholders should not need to chase status to understand where the work stands.",
+      "Regular updates, clear decisions, and visible progress throughout delivery.",
   },
   {
     title: "Quality at the source",
@@ -504,7 +507,7 @@ export const aboutPrinciples = [
   {
     title: "Long-term partnership thinking",
     description:
-      "The work should make the next phase easier, not leave the client dependent on fragile implementation.",
+      "The work is built to support growth, change, and future teams.",
   },
 ];
 
@@ -592,13 +595,13 @@ export const processFaqs: FaqItem[] = [
   {
     question: "Do you document what is built?",
     answer:
-      "Yes. Documentation and handover context matter because the product should still make sense to the next team that touches it.",
+      "Yes. Documentation and handover context are included so the product stays clear to internal teams and future partners.",
   },
 ];
 
 export const contactFaqs: FaqItem[] = [
   {
-    question: "What should we include in the inquiry?",
+    question: "What is helpful to include in the inquiry?",
     answer:
       "Share the business goal, users, current pain points, rough timeline, and any technical or stakeholder constraints.",
   },

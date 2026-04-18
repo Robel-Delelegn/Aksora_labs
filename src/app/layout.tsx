@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { StructuredData } from "@/components/site/structured-data";
+import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 import { siteConfig } from "@/lib/site-data";
 import "./globals.css";
 
@@ -80,6 +81,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <WhatsAppFloat />
         </div>
       </body>
     </html>

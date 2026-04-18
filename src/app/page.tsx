@@ -1,8 +1,11 @@
 import { ArrowRight, Compass, ShieldCheck, Workflow } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 import { ButtonLink } from "@/components/site/button-link";
 import { CtaSection } from "@/components/site/cta-section";
 import { FaqList } from "@/components/site/faq-list";
+import { HomeCapabilityShowcase } from "@/components/site/home-capability-showcase";
 import { ImmersiveHomeHero } from "@/components/site/immersive-home-hero";
 import { MediaComposition } from "@/components/site/media-composition";
 import { Reveal } from "@/components/site/reveal";
@@ -35,7 +38,7 @@ const trustPillars = [
   },
   {
     title: "Visible progress",
-    body: "Scope, risk, and next steps stay clear instead of hiding in agency process fog.",
+    body: "Scope, risk, and next steps remain visible throughout delivery.",
     icon: Workflow,
   },
   {
@@ -47,78 +50,97 @@ const trustPillars = [
 
 export default function HomePage() {
   const featuredServices = featuredServiceIndexes.map((index) => services[index]);
-  const featuredCaseStudy = caseStudies[0];
-  const secondaryCaseStudies = caseStudies.slice(1);
   const processPreview = processSteps.slice(0, 4);
 
   const heroSlides = [
     {
       id: "websites",
       label: "Flagship websites",
-      title: "Positioning, structure, and presentation that make the business look more established.",
+      title: "Websites built for stronger first impressions and clearer positioning.",
       description:
-        "For companies that need the site to earn trust inside the first few seconds.",
+        "Premium websites for companies that need sharper presentation, better structure, and higher-conviction digital credibility.",
       imageSrc: "/images/home-hero-cinematic-02-v1.png",
       imageAlt: "Cinematic premium website and product design review environment",
-      detailA: "Messaging architecture and conversion-focused page structure.",
-      detailB: "A sharper public signal for buyers, stakeholders, and investors.",
+      highlights: [
+        "Messaging architecture",
+        "Editorial page systems",
+        "CMS-ready build",
+      ],
     },
     {
       id: "products",
       label: "Web products",
-      title: "Browser-based products that feel controlled under real operational complexity.",
+      title: "Web products that stay clear as workflows, roles, and data grow.",
       description:
-        "For dashboards, portals, and business software that need clarity as much as code quality.",
+        "Browser-based platforms for dashboards, portals, and business software where clarity matters as much as code quality.",
       imageSrc: "/images/home-hero-cinematic-01-v1.png",
       imageAlt: "Cinematic software strategy environment with product dashboards",
-      detailA: "Product UX, architecture, and delivery shaped as one system.",
-      detailB: "Useful for operations, reporting, admin, and customer-facing workflows.",
+      highlights: [
+        "Product UX",
+        "Role-based workflows",
+        "Reliable delivery",
+      ],
     },
     {
       id: "systems",
       label: "Internal systems",
-      title: "Operational software that improves visibility, cadence, and control.",
+      title: "Internal systems that improve visibility, reporting, and operational control.",
       description:
-        "For teams that need internal tools to remove drag instead of creating more of it.",
+        "Operational platforms for admin, reporting, and internal workflows that need less manual work and better visibility.",
       imageSrc: "/images/home-hero-cinematic-03-v1.png",
       imageAlt: "Cinematic internal systems and operations control environment",
-      detailA: "Workflow design that reduces manual work and reporting friction.",
-      detailB: "Built for businesses that need reliability behind the scenes as well as polish out front.",
+      highlights: [
+        "Workflow mapping",
+        "Admin systems",
+        "Reporting visibility",
+      ],
     },
   ];
 
-  const serviceRows = [
+  const capabilityItems = [
     {
+      id: "websites",
+      eyebrow: "Custom websites",
+      title: "Credible websites for ambitious businesses.",
       service: featuredServices[0],
       imageSrc: "/images/service-website-editorial-v1.png",
       imageAlt: "Premium website presentation on a desktop monitor",
-      stageVariant: "services" as const,
-      note: "The public-facing surface should make the business look stronger immediately.",
-      cta: "See website work",
+      note: "Sharper positioning and a stronger first impression.",
+      signal: "Credibility and conversion",
+      href: "/services",
     },
     {
+      id: "products",
+      eyebrow: "Web applications",
+      title: "Operational web apps that stay clear under complexity.",
       service: featuredServices[1],
       imageSrc: "/images/service-webapp-editorial-v1.png",
       imageAlt: "Web application dashboard review environment",
-      stageVariant: "work" as const,
-      note: "The product layer should stay readable when the workflow gets more complex.",
-      cta: "See product work",
+      note: "Interfaces built for workflows, roles, and data that keep growing.",
+      signal: "Clarity and control",
+      href: "/services",
     },
     {
+      id: "mobile",
+      eyebrow: "Mobile products",
+      title: "Mobile products that feel fast and intentional.",
       service: featuredServices[2],
       imageSrc: "/images/service-mobile-editorial-v1.png",
       imageAlt: "Mobile app review on premium devices",
-      stageVariant: "contact" as const,
-      note: "Mobile software should feel focused, fast, and usable in real contexts.",
-      cta: "See mobile work",
+      note: "Focused product UX for customers, staff, and field teams.",
+      signal: "Speed and usability",
+      href: "/services",
     },
     {
+      id: "systems",
+      eyebrow: "Internal systems",
+      title: "Internal systems with cleaner reporting and control.",
       service: featuredServices[3],
       imageSrc: "/images/service-systems-editorial-v1.png",
       imageAlt: "Enterprise workflow and systems environment",
-      stageVariant: "process" as const,
-      note: "Internal systems should lower operational drag and improve visibility at the same time.",
-      cta: "See systems work",
+      note: "Operational software that reduces manual work and improves visibility.",
+      signal: "Reporting and oversight",
+      href: "/services",
     },
   ];
 
@@ -144,6 +166,36 @@ export default function HomePage() {
       imageAlt: processPreview[3].title,
     },
   ];
+
+  const homeWorkShowcase = [
+    {
+      study: caseStudies[0],
+      title: "Investor reporting portal",
+      summary: "Secure reporting portal for a regional private capital firm.",
+      imageSrc: "/images/operations-control-editorial-v1.png",
+      imageAlt: "Investor reporting portal environment",
+      highlight: "4x faster reporting cadence",
+    },
+    {
+      study: caseStudies[1],
+      title: "Patient booking and care coordination",
+      summary: "Unified booking and scheduling for a multi-site healthcare group.",
+      imageSrc: "/images/hero-studio-editorial-v1.png",
+      imageAlt: "Patient booking platform environment",
+      highlight: "Simplified patient journey",
+    },
+    {
+      study: caseStudies[2],
+      title: "Field operations suite",
+      summary: "Dispatch, mobile workflows, and reporting for a logistics business.",
+      imageSrc: "/images/service-systems-editorial-v1.png",
+      imageAlt: "Field operations suite environment",
+      highlight: "Real-time dispatch visibility",
+    },
+  ];
+
+  const featuredWork = homeWorkShowcase[0];
+  const secondaryWork = homeWorkShowcase.slice(1);
 
   return (
     <>
@@ -181,75 +233,42 @@ export default function HomePage() {
         logos={clientLogoPlaceholders}
       />
 
-      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+      <SectionShell className="home-dark-section home-dark-section--plain py-20 text-white sm:py-24">
         <Reveal>
           <SectionHeading
             eyebrow="Capabilities"
-            title="What serious teams usually hire Aksora Labs to handle."
-            description="Use the home page to understand the shape of the work fast. Then go deeper where it matters."
+            title="Core capabilities across web, product, mobile, and systems."
+            description="Aksora Labs combines strategy, design, and engineering for digital work that carries real business weight."
             align="center"
             tone="light"
           />
         </Reveal>
 
-        <div className="mt-14 space-y-20">
-          {serviceRows.map((item, index) => (
-            <Reveal key={item.service.title} delay={index * 90}>
-              <article className="grid gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <MediaComposition
-                    imageSrc={item.imageSrc}
-                    imageAlt={item.imageAlt}
-                    imagePosition="object-center"
-                    stageVariant={item.stageVariant}
-                    compactStage
-                    note={item.note}
-                    notePlacement="bottom-left"
-                    stageWidthClassName="w-[38%] min-w-[170px] max-w-[240px]"
-                    heightClassName="h-[340px] sm:h-[420px] xl:h-[500px]"
-                    className="border border-white/10 bg-white/4"
-                  />
-                </div>
-                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <span className="inline-flex rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[0.72rem] font-semibold tracking-[0.18em] text-white/72 uppercase">
-                    {item.service.title}
-                  </span>
-                  <h3 className="mt-6 max-w-xl font-[family:var(--font-body-bold)] text-[2.45rem] leading-[0.98] tracking-[-0.04em] text-white sm:text-[3rem]">
-                    {item.service.description}
-                  </h3>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {item.service.deliverables.map((deliverable) => (
-                      <span
-                        key={deliverable}
-                        className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-[0.78rem] font-medium text-white/68"
-                      >
-                        {deliverable}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-8">
-                    <ButtonLink
-                      href="/services"
-                      variant="secondary"
-                      className="border-white/16 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
-                    >
-                      {item.cta}
-                    </ButtonLink>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+        <div className="mt-14">
+          <HomeCapabilityShowcase
+            items={capabilityItems.map((item) => ({
+              id: item.id,
+              eyebrow: item.eyebrow,
+              title: item.title,
+              description: item.service.description,
+              deliverables: item.service.deliverables,
+              imageSrc: item.imageSrc,
+              imageAlt: item.imageAlt,
+              note: item.note,
+              signal: item.signal,
+              href: item.href,
+            }))}
+          />
         </div>
       </SectionShell>
 
-      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+      <SectionShell className="home-dark-section home-dark-section--top py-20 text-white sm:py-24">
         <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
           <Reveal>
             <SectionHeading
               eyebrow="Selected Work"
-              title="A case study should make judgment visible."
-              description="Problem, product response, and business impact should be easy to assess without reading a wall of explanation."
+              title="Selected work that shows range, judgment, and execution."
+              description="Each case study makes the business problem, product response, and outcome easy to understand."
               tone="light"
             />
           </Reveal>
@@ -266,64 +285,56 @@ export default function HomePage() {
           </Reveal>
         </div>
 
-        <Reveal variant="up" delay={140}>
-          <article className="mt-12 overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.03] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
-            <div className="grid gap-0 xl:grid-cols-[1.02fr_0.98fr]">
-              <MediaComposition
-                imageSrc="/images/operations-control-editorial-v1.png"
-                imageAlt={featuredCaseStudy.title}
-                imagePosition="object-center"
-                stageVariant="work"
-                compactStage
-                note={featuredCaseStudy.clientType}
-                notePlacement="bottom-left"
-                stageWidthClassName="w-[35%] min-w-[160px] max-w-[220px]"
-                heightClassName="h-[340px] sm:h-[460px] xl:h-full"
-                className="border-none bg-transparent p-0"
-              />
-              <div className="flex flex-col justify-between p-7 sm:p-10">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[0.72rem] font-semibold tracking-[0.18em] text-white/72 uppercase">
-                      {featuredCaseStudy.badge}
-                    </span>
-                    <span className="text-sm text-white/46">
-                      {featuredCaseStudy.industry}
-                    </span>
-                  </div>
-                  <h3 className="mt-6 max-w-xl font-[family:var(--font-body-bold)] text-[2.45rem] leading-[0.98] tracking-[-0.04em] text-white sm:text-[3rem]">
-                    {featuredCaseStudy.title}
-                  </h3>
-                  <p className="mt-5 max-w-2xl text-[1rem] leading-8 text-white/68">
-                    {featuredCaseStudy.summary}
-                  </p>
+        <div className="home-work-showcase mt-12">
+          <Reveal variant="up" delay={140}>
+            <article className="home-work-feature group">
+              <div className="home-work-feature__media">
+                <Image
+                  src={featuredWork.imageSrc}
+                  alt={featuredWork.imageAlt}
+                  fill
+                  sizes="(max-width: 1279px) 100vw, 58vw"
+                  className="media-drift object-cover object-center"
+                />
+                <div className="home-work-feature__media-overlay" />
+                <div className="home-work-feature__media-note">
+                  {featuredWork.study.clientType}
+                </div>
+              </div>
+
+              <div className="home-work-feature__panel">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[0.72rem] font-semibold tracking-[0.18em] text-white/72 uppercase">
+                    {featuredWork.study.badge}
+                  </span>
+                  <span className="text-sm text-white/46">
+                    {featuredWork.study.industry}
+                  </span>
                 </div>
 
-                <div className="mt-8 grid gap-4 border-y border-white/10 py-6 sm:grid-cols-3">
-                  {featuredCaseStudy.metrics.map((metric) => (
-                    <div key={metric.label}>
-                      <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/42 uppercase">
+                <h3 className="home-work-feature__title">
+                  {featuredWork.title}
+                </h3>
+                <p className="home-work-feature__summary">
+                  {featuredWork.summary}
+                </p>
+
+                <div className="home-work-feature__metrics">
+                  {featuredWork.study.metrics.map((metric) => (
+                    <div key={metric.label} className="home-work-feature__metric">
+                      <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/40 uppercase">
                         {metric.label}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-white/82">
+                      <p className="mt-2 text-sm leading-6 text-white/84">
                         {metric.value}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <ul className="mt-7 space-y-3 text-[0.98rem] leading-7 text-white/72">
-                  {featuredCaseStudy.outcomes.map((outcome) => (
-                    <li key={outcome} className="flex gap-3">
-                      <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#d8b6bc]" />
-                      <span>{outcome}</span>
-                    </li>
-                  ))}
-                </ul>
-
                 <div className="mt-8">
                   <ButtonLink
-                    href={`/work/${featuredCaseStudy.slug}`}
+                    href={`/work/${featuredWork.study.slug}`}
                     variant="secondary"
                     className="border-white/14 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
                   >
@@ -331,52 +342,74 @@ export default function HomePage() {
                   </ButtonLink>
                 </div>
               </div>
-            </div>
-          </article>
-        </Reveal>
+            </article>
+          </Reveal>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          {secondaryCaseStudies.map((item, index) => (
-            <Reveal key={item.slug} delay={160 + index * 70}>
-              <a
-                href={`/work/${item.slug}`}
-                className="group block rounded-[28px] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.05]"
-              >
-                <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-white/44 uppercase">
-                  {item.badge}
-                </p>
-                <h4 className="mt-4 font-[family:var(--font-heading)] text-[2rem] leading-[1.02] text-white">
-                  {item.title}
-                </h4>
-                <p className="mt-4 max-w-2xl text-[0.98rem] leading-7 text-white/64">
-                  {item.summary}
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-white/78">
-                  Open case study
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </div>
-              </a>
-            </Reveal>
-          ))}
+          <div className="home-work-teasers">
+            {secondaryWork.map((item, index) => (
+              <Reveal key={item.study.slug} delay={170 + index * 70}>
+                <Link
+                  href={`/work/${item.study.slug}`}
+                  className="home-work-teaser group"
+                >
+                  <div className="home-work-teaser__media">
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 1279px) 100vw, 36vw"
+                      className="object-cover object-center transition duration-700 ease-out group-hover:scale-[1.04]"
+                    />
+                    <div className="home-work-teaser__overlay" />
+                    <span className="home-work-teaser__chip">
+                      {item.highlight}
+                    </span>
+                  </div>
+                  <div className="home-work-teaser__content">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-white/52 uppercase">
+                        {item.study.badge}
+                      </p>
+                      <span className="text-sm text-white/38">
+                        {item.study.industry}
+                      </span>
+                    </div>
+                    <h4 className="home-work-teaser__title">
+                      {item.title}
+                    </h4>
+                    <p className="home-work-teaser__summary">
+                      {item.summary}
+                    </p>
+                    <div className="home-work-teaser__cta">
+                      Open case study
+                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </SectionShell>
 
-      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+      <SectionShell className="home-dark-section home-dark-section--plain py-20 text-white sm:py-24">
         <Reveal>
           <SectionHeading
             eyebrow="Process"
             title="A delivery model designed to keep momentum visible."
-            description="The process should make the engagement easier to trust before the work gets expensive."
+            description="A clear delivery process keeps decisions, progress, and next steps easy to track."
             align="center"
             tone="light"
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+        <div className="process-runway mt-14">
+          <div className="process-runway__line" />
           {processCards.map((item, index) => (
             <Reveal key={item.step.title} delay={index * 80}>
-              <article className="overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))]">
-                <div className="relative aspect-[1.1/0.78] overflow-hidden">
+              <article className={`process-runway__card ${index % 2 === 1 ? "process-runway__card--offset" : ""}`}>
+                <div className="process-runway__node" />
+                <div className="relative aspect-[1.08/0.82] overflow-hidden rounded-[24px]">
                   <MediaComposition
                     imageSrc={item.imageSrc}
                     imageAlt={item.imageAlt}
@@ -387,7 +420,7 @@ export default function HomePage() {
                     className="h-full border-none bg-transparent p-0"
                   />
                 </div>
-                <div className="p-6">
+                <div className="process-runway__body">
                   <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/42 uppercase">
                     {`Step ${index + 1}`}
                   </p>
@@ -414,23 +447,23 @@ export default function HomePage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="border-t border-white/10 bg-[#050608] py-20 text-white sm:py-24">
+      <SectionShell className="home-dark-section home-dark-section--right py-20 text-white sm:py-24">
         <div className="grid gap-12 xl:grid-cols-[0.7fr_1.3fr] xl:items-start">
           <Reveal>
             <SectionHeading
               eyebrow="Why Aksora"
-              title="Trust should come from how the work is organized."
-              description="The website should make the operating standard legible, not just say that it exists."
+              title="How Aksora Labs earns trust."
+              description="Senior attention, visible progress, and durable systems shape every engagement."
               tone="light"
             />
 
-            <div className="mt-10 space-y-5">
+            <div className="mt-10 border-t border-white/10">
               {trustPillars.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <Reveal key={item.title} delay={index * 70}>
-                    <article className="rounded-[24px] border border-white/10 bg-white/[0.03] p-6">
+                    <article className="trust-signal-row">
                       <div className="flex items-start gap-4">
                         <span className="icon-emblem border-white/14 bg-white/8 text-white">
                           <Icon className="h-5 w-5" />
@@ -452,10 +485,10 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal variant="up" delay={120}>
-            <div className="rounded-[32px] border border-white/10 bg-white/[0.03] p-7 sm:p-9">
+            <div className="faq-observatory">
               <SectionHeading
                 eyebrow="FAQ"
-                title="A few questions buyers usually want answered early."
+                title="Questions clients often ask early."
                 description="Clear answers reduce friction. They also signal maturity."
                 tone="light"
               />
@@ -467,16 +500,16 @@ export default function HomePage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="border-t border-white/10 bg-[#050608] pb-8 pt-24">
+      <SectionShell className="home-dark-section home-dark-section--plain pb-8 pt-24">
         <CtaSection
           eyebrow="Next Step"
           title="Bring the website, product, or system up to the level the business needs."
-          description="Use the first conversation to clarify the opportunity, the risk, and the right delivery path."
+          description="The first conversation clarifies the opportunity, the risk, and the right delivery path."
           imageSrc="/images/home-hero-cinematic-01-v1.png"
           imageAlt="Premium software strategy environment"
           stageVariant="contact"
           points={[
-            "Pressure-test scope before the wrong build expands",
+            "Clarify scope before cost expands",
             "Align strategy, UX, and engineering from the start",
             "Move with a partner that makes quality visible",
           ]}

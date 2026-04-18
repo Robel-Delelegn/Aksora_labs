@@ -8,6 +8,7 @@ import {
 type MediaCompositionProps = {
   imageSrc: string;
   imageAlt: string;
+  tone?: "light" | "dark";
   imagePosition?: string;
   stageVariant?: StageVariant;
   stagePlacement?: "left" | "right";
@@ -22,6 +23,7 @@ type MediaCompositionProps = {
 export function MediaComposition({
   imageSrc,
   imageAlt,
+  tone = "light",
   imagePosition = "object-center",
   stageVariant,
   stagePlacement = "right",
@@ -36,6 +38,7 @@ export function MediaComposition({
     stagePlacement === "left"
       ? "left-4 sm:left-6"
       : "right-4 sm:right-6";
+  const isDark = tone === "dark";
 
   const notePositionClassName =
     notePlacement === "bottom-left"
@@ -45,9 +48,11 @@ export function MediaComposition({
         : "left-4 top-4 sm:left-6 sm:top-6";
 
   return (
-    <div className={`visual-stage bg-white p-3 ${className}`}>
+    <div
+      className={`visual-stage p-3 ${isDark ? "rounded-[30px] border border-white/10 bg-white/[0.03]" : "bg-white"} ${className}`}
+    >
       <div
-        className={`relative overflow-hidden border border-[var(--border)] bg-[#161213] ${heightClassName}`}
+        className={`relative overflow-hidden ${isDark ? "rounded-[24px] border border-white/10" : "border border-[var(--border)]"} bg-[#161213] ${heightClassName}`}
       >
         <Image
           src={imageSrc}
@@ -61,7 +66,7 @@ export function MediaComposition({
 
         {note ? (
           <div
-            className={`absolute ${notePositionClassName} max-w-[260px] border border-white/14 bg-[#171411]/74 px-4 py-3 text-white backdrop-blur-md`}
+            className={`absolute ${notePositionClassName} max-w-[260px] rounded-[18px] border border-white/14 bg-[#171411]/74 px-4 py-3 text-white backdrop-blur-md`}
           >
             <p className="text-[0.72rem] leading-6 text-white/82">{note}</p>
           </div>

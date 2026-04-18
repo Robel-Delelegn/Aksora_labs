@@ -134,34 +134,36 @@ export default function ServicesPage() {
   ];
 
   return (
-    <>
+    <div className="site-dark-page">
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Services"
           title="Capabilities built to move serious digital work forward."
           description="Aksora Labs designs, builds, modernizes, and extends websites, products, and internal systems."
           badges={["Web", "Product", "Mobile", "Systems", "Support"]}
+          tone="dark"
           stageVariant="services"
           mediaSrc="/images/strategy-wall-editorial-v1.png"
           mediaAlt="Strategy workspace with pinned wireframes and interface artifacts"
-          mediaNote="Strategy, design, and engineering should feel like one connected practice."
+          mediaNote="Strategy, design, and engineering working as one practice."
           mediaPosition="object-center"
         />
       </SectionShell>
 
       <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Core Services"
             title="The work clients most often bring in."
-            description="Presented the same way the work should feel: clear, visual, and deliberate."
+            description="The essential capabilities most teams come looking for first."
+            tone="light"
           />
         </div>
 
         <div className="mt-10">
           <EditorialCarousel
             items={coreServiceCards}
-            theme="warm"
+            theme="dark"
             variant="stacked"
             columns={{ tablet: 2, desktop: 3 }}
           />
@@ -169,17 +171,18 @@ export default function ServicesPage() {
       </SectionShell>
 
       <SectionShell className="pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Supporting Capabilities"
             title="Additional coverage that keeps delivery complete."
+            tone="light"
           />
         </div>
 
         <div className="mt-10">
           <EditorialCarousel
             items={supportCards}
-            theme="light"
+            theme="dark"
             variant="stacked"
             columns={{ tablet: 2, desktop: 4 }}
           />
@@ -187,24 +190,28 @@ export default function ServicesPage() {
       </SectionShell>
 
       <SectionShell className="pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Engagement Model"
             title="Launch, modernize, or extend."
-            description="The structure changes with the business problem, not with agency packaging theatre."
+            description="The shape of the engagement should follow the business need."
+            tone="light"
           />
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {engagementModels.map((model, index) => (
-            <article key={model.title} className="editorial-note-panel p-8">
-              <p className="relative text-[0.72rem] font-semibold tracking-[0.18em] text-[var(--accent)] uppercase">
+            <article
+              key={model.title}
+              className="editorial-note-panel editorial-note-panel--dark p-8"
+            >
+              <p className="relative text-[0.72rem] font-semibold tracking-[0.18em] text-[#d8b6bc] uppercase">
                 {`0${index + 1}`}
               </p>
-              <h3 className="relative mt-5 font-[family:var(--font-heading)] text-[2.2rem] font-normal leading-[0.98] text-slate-950">
+              <h3 className="relative mt-5 font-[family:var(--font-heading)] text-[2.2rem] font-normal leading-[0.98] text-white">
                 {model.title}
               </h3>
-              <p className="relative mt-4 text-[0.98rem] leading-8 text-slate-600">
+              <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
                 {model.description}
               </p>
             </article>
@@ -218,8 +225,9 @@ export default function ServicesPage() {
             eyebrow="FAQ"
             title="Service questions, answered clearly."
             description="Enough detail to remove friction. No filler."
+            tone="light"
           />
-          <FaqList items={servicesFaqs} />
+          <FaqList items={servicesFaqs} tone="dark" />
         </div>
       </SectionShell>
 
@@ -227,7 +235,7 @@ export default function ServicesPage() {
         <CtaSection
           eyebrow="Next Step"
           title="Start with the business need. Shape the delivery around that."
-          description="If the problem matters, the engagement model should feel right before the first sprint starts."
+          description="Start with the business need, then shape the right scope, team, and delivery path."
           imageSrc="/images/strategy-wall-editorial-v1.png"
           imageAlt="Premium strategy workspace"
           stageVariant="services"
@@ -238,6 +246,6 @@ export default function ServicesPage() {
           ]}
         />
       </SectionShell>
-    </>
+    </div>
   );
 }

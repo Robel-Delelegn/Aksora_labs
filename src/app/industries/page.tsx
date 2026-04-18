@@ -81,13 +81,14 @@ export default function IndustriesPage() {
   ];
 
   return (
-    <>
+    <div className="site-dark-page">
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Industries"
           title="Different sectors. Different constraints. The same standard of execution."
           description="Aksora Labs adapts the delivery lens to the buyer, the users, and the operational context."
           badges={["Startups", "SMEs", "Enterprise", "Operational software"]}
+          tone="dark"
           stageVariant="industries"
           mediaSrc="/images/operations-control-editorial-v1.png"
           mediaAlt="Editorial enterprise operations environment"
@@ -96,17 +97,18 @@ export default function IndustriesPage() {
       </SectionShell>
 
       <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Focus Areas"
             title="Where clarity, reliability, and digital credibility matter."
+            tone="light"
           />
         </div>
 
         <div className="mt-10">
           <EditorialCarousel
             items={industryCards}
-            theme="light"
+            theme="dark"
             variant="stacked"
             columns={{ tablet: 2, desktop: 3 }}
           />
@@ -114,10 +116,11 @@ export default function IndustriesPage() {
       </SectionShell>
 
       <SectionShell className="pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Buyer Context"
             title="How the buying lens changes."
+            tone="light"
           />
         </div>
 
@@ -136,11 +139,14 @@ export default function IndustriesPage() {
               body: "Need reliability, governance, and confidence inside larger constraints.",
             },
           ].map((item) => (
-            <article key={item.title} className="editorial-note-panel p-8">
-              <h3 className="relative font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-slate-950">
+            <article
+              key={item.title}
+              className="editorial-note-panel editorial-note-panel--dark p-8"
+            >
+              <h3 className="relative font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-white">
                 {item.title}
               </h3>
-              <p className="relative mt-4 text-[0.98rem] leading-8 text-slate-600">
+              <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
                 {item.body}
               </p>
             </article>
@@ -152,7 +158,7 @@ export default function IndustriesPage() {
         <CtaSection
           eyebrow="Get Specific"
           title="The best projects start when the business context is discussed as seriously as the software."
-          description="If the product has to work inside a specific buyer environment, that should shape the discovery conversation early."
+          description="The right solution depends on the users, stakeholders, and operating reality of the business."
           imageSrc="/images/operations-control-editorial-v1.png"
           imageAlt="Enterprise operations and planning environment"
           stageVariant="industries"
@@ -163,6 +169,6 @@ export default function IndustriesPage() {
           ]}
         />
       </SectionShell>
-    </>
+    </div>
   );
 }

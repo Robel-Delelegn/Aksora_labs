@@ -24,7 +24,7 @@ export function CtaSection({
   stageVariant = "contact",
 }: CtaSectionProps) {
   return (
-    <div className="border border-[#262626] border-t-[6px] border-t-[var(--accent)] bg-[var(--dark)] px-6 py-10 text-white sm:px-10 sm:py-12">
+    <div className="dark-ambient-shell overflow-hidden rounded-[40px] border border-white/10 px-6 py-10 text-white sm:px-10 sm:py-12">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
         <div>
           <p className="mb-4 text-[0.72rem] font-semibold tracking-[0.24em] text-[#d8b6bc] uppercase">
@@ -56,15 +56,16 @@ export function CtaSection({
           <MediaComposition
             imageSrc={imageSrc}
             imageAlt={imageAlt}
+            tone="dark"
             stageVariant={stageVariant}
             compactStage
             stageWidthClassName="w-[40%] min-w-[180px] max-w-[240px]"
             heightClassName="h-[250px] sm:h-[280px]"
-            note="Premium delivery should feel considered before the first sprint starts."
+            note="Senior-led delivery with clear direction from the start."
             notePlacement="bottom-left"
-            className="border border-white/12 bg-white/4"
+            className="rounded-[28px] border border-white/12 bg-white/4"
           />
-          <div className="border border-white/15 bg-white/5 p-6">
+          <div className="rounded-[28px] border border-white/12 bg-white/[0.045] p-6">
             <p className="text-sm font-semibold tracking-[0.18em] text-slate-300 uppercase">
               What clients value
             </p>

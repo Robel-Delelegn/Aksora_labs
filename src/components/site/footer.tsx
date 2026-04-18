@@ -23,7 +23,7 @@ export function Footer() {
               {footerCredibility.map((item) => (
                 <span
                   key={item}
-                  className="border border-white/14 bg-white/6 px-3 py-1.5 text-xs font-semibold tracking-[0.08em] text-white/74 uppercase"
+                  className="motion-pill-dark border border-white/14 bg-white/6 px-3 py-1.5 text-xs font-semibold tracking-[0.08em] text-white/74 uppercase"
                 >
                   {item}
                 </span>
@@ -39,7 +39,7 @@ export function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[0.98rem] text-white/72 transition hover:text-white"
+                  className="nav-link-motion text-[0.98rem] text-white/72 transition hover:text-white"
                 >
                   {item.label}
                 </Link>
@@ -54,7 +54,7 @@ export function Footer() {
               <p>{siteConfig.location}</p>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="block font-semibold text-white transition hover:text-[#f6d6db]"
+                className="motion-link-inline block font-semibold text-white transition hover:text-[#f6d6db]"
               >
                 {siteConfig.email}
               </a>
@@ -65,7 +65,7 @@ export function Footer() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-semibold text-white/72 underline underline-offset-4 transition hover:text-white"
+                  className="motion-link-inline text-sm font-semibold text-white/72 underline underline-offset-4 transition hover:text-white"
                   title={link.note}
                 >
                   {link.label}

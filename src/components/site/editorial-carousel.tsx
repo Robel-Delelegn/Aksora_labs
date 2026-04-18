@@ -57,16 +57,16 @@ export function EditorialCarousel({
 
   const stackedSurfaceClassName =
     theme === "warm"
-      ? "bg-[#f1ece4]"
+      ? "border-[rgba(201,190,176,0.82)] bg-[#f1ece4]"
       : theme === "dark"
-        ? "bg-[#1a223d] text-white"
+        ? "border-white/10 bg-[#0b0d11] text-white"
         : "bg-white";
 
   const stackedBodyClassName =
     theme === "warm"
       ? "bg-[#f7f2ea]"
       : theme === "dark"
-        ? "bg-[#141b31]"
+        ? "dark-ambient-card"
         : "bg-[#f8f5ef]";
 
   const stackedTextClassName =
@@ -76,7 +76,10 @@ export function EditorialCarousel({
     theme === "dark" ? "text-white/74" : "text-slate-700";
 
   const metaTextClassName =
-    theme === "dark" ? "text-white/56" : "text-slate-500";
+    theme === "dark" ? "text-white/42" : "text-slate-500";
+
+  const eyebrowClassName =
+    theme === "dark" ? "text-[#d8b6bc]" : "text-[var(--accent)]";
 
   const circleClassName =
     theme === "dark"
@@ -176,13 +179,13 @@ export function EditorialCarousel({
             className="editorial-carousel-item group block"
           >
             {variant === "overlay" ? (
-              <article className="relative min-h-[450px] overflow-hidden bg-[#121932] shadow-[0_20px_56px_rgba(8,10,16,0.24)] transition duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(8,10,16,0.3)] sm:min-h-[520px]">
+              <article className="editorial-carousel-surface editorial-carousel-surface--overlay relative min-h-[450px] overflow-hidden bg-[#121932] shadow-[0_20px_56px_rgba(8,10,16,0.24)] transition duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(8,10,16,0.3)] sm:min-h-[520px]">
                 <Image
                   src={item.imageSrc}
                   alt={item.imageAlt}
                   fill
                   sizes="(max-width: 767px) 82vw, (max-width: 1279px) 48vw, 30vw"
-                  className="object-cover transition duration-700 ease-out group-hover:scale-[1.045]"
+                  className="editorial-carousel-image object-cover transition duration-700 ease-out group-hover:scale-[1.045]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0e1426]/96 via-[#10172c]/44 to-[#10172c]/10" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_34%)]" />
@@ -213,7 +216,7 @@ export function EditorialCarousel({
               </article>
             ) : (
               <article
-                className={`flex h-full flex-col overflow-hidden shadow-[0_16px_42px_rgba(23,20,17,0.06)] transition duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_26px_56px_rgba(23,20,17,0.12)] ${stackedSurfaceClassName}`}
+                className={`editorial-carousel-surface editorial-carousel-surface--stacked flex h-full flex-col overflow-hidden border shadow-[0_16px_42px_rgba(23,20,17,0.06)] transition duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_26px_56px_rgba(23,20,17,0.12)] ${stackedSurfaceClassName}`}
               >
                 <div className={`relative overflow-hidden ${imageAspectClassName}`}>
                   <Image
@@ -221,12 +224,14 @@ export function EditorialCarousel({
                     alt={item.imageAlt}
                     fill
                     sizes="(max-width: 767px) 82vw, (max-width: 1279px) 48vw, 30vw"
-                    className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
+                    className="editorial-carousel-image object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
                   />
                 </div>
                 <div className={`flex min-h-[280px] flex-1 flex-col px-7 py-7 ${stackedBodyClassName}`}>
                   {item.eyebrow ? (
-                    <p className="text-[0.72rem] font-semibold tracking-[0.2em] text-[var(--accent)] uppercase">
+                    <p
+                      className={`text-[0.72rem] font-semibold tracking-[0.2em] uppercase ${eyebrowClassName}`}
+                    >
                       {item.eyebrow}
                     </p>
                   ) : null}

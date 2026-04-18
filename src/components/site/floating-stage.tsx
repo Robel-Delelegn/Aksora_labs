@@ -65,7 +65,7 @@ const stageConfigs: Record<StageVariant, StageConfig> = {
   },
   process: {
     title: "Visible progression",
-    note: "Scope, decisions, and momentum should stay visible throughout.",
+    note: "Clear scope, visible decisions, and steady momentum.",
     chips: ["Scope", "Design", "Launch"],
     sideLabel: "Rhythm",
     sideValue: "Clear",
@@ -105,7 +105,7 @@ const stageConfigs: Record<StageVariant, StageConfig> = {
   },
   contact: {
     title: "Discovery first",
-    note: "The first conversation should lower uncertainty immediately.",
+    note: "A clear first conversation around fit, scope, and next step.",
     chips: ["Context", "Fit", "Direction"],
     sideLabel: "Next step",
     sideValue: "Clear",
@@ -115,7 +115,7 @@ const stageConfigs: Record<StageVariant, StageConfig> = {
   },
   case: {
     title: "Product evidence",
-    note: "A strong case study shows both the product and the reasoning behind it.",
+    note: "Business context, product decisions, and measurable results.",
     chips: ["Outcome", "Features", "Stack"],
     sideLabel: "Signal",
     sideValue: "Serious",

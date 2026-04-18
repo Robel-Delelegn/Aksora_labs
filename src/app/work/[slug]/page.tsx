@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, BadgeCheck } from "lucide-react";
+import { ArrowLeft, BadgeCheck } from "lucide-react";
 
 import { CaseStudyCard } from "@/components/site/case-study-card";
 import { CtaSection } from "@/components/site/cta-section";
 import { MediaComposition } from "@/components/site/media-composition";
+import { SectionHeading } from "@/components/site/section-heading";
+import { SectionShell } from "@/components/site/section-shell";
 import { StructuredData } from "@/components/site/structured-data";
 import { buildMetadata } from "@/lib/metadata";
 import { caseStudies, siteConfig } from "@/lib/site-data";
@@ -75,7 +77,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           : "/images/editorial-banner-studio-v1.png";
 
   return (
-    <>
+    <div className="site-dark-page">
       <StructuredData
         data={{
           "@context": "https://schema.org",
@@ -93,35 +95,35 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         }}
       />
 
-      <section className="pt-8 sm:pt-12">
-        <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-6 lg:px-10">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 underline underline-offset-4 transition hover:text-[var(--accent)]"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to selected work
-          </Link>
+      <SectionShell className="pt-8 sm:pt-12">
+        <Link
+          href="/work"
+          className="motion-link-inline inline-flex items-center gap-2 text-sm font-semibold text-white/72 underline underline-offset-4 transition hover:text-white"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to selected work
+        </Link>
 
-          <div className="page-masthead-grid mt-6 border-y border-[var(--border-strong)] bg-white px-0 py-12 sm:py-14 lg:py-16">
+        <div className="dark-ambient-shell mt-6 overflow-hidden rounded-[38px] border border-white/10">
+          <div className="page-masthead-grid px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
             <div className="max-w-4xl">
-              <span className="text-[0.72rem] font-semibold tracking-[0.24em] text-[var(--accent)] uppercase">
+              <span className="text-[0.72rem] font-semibold tracking-[0.24em] text-[#d8b6bc] uppercase">
                 {caseStudy.badge}
               </span>
-              <h1 className="mt-6 text-balance font-[family:var(--font-display)] text-[3.4rem] font-normal leading-[0.94] tracking-[-0.03em] text-slate-950 sm:text-[4.4rem] lg:text-[5rem]">
+              <h1 className="mt-6 text-balance font-[family:var(--font-display)] text-[3.4rem] font-normal leading-[0.94] tracking-[-0.03em] text-white sm:text-[4.4rem] lg:text-[5rem]">
                 {caseStudy.title}
               </h1>
-              <p className="mt-6 max-w-3xl text-pretty text-[1.02rem] leading-7 text-slate-700">
+              <p className="mt-6 max-w-3xl text-pretty text-[1.02rem] leading-8 text-white/68">
                 {caseStudy.summary}
               </p>
 
-              <div className="mt-8 grid gap-4 border-t border-[var(--border)] pt-5 sm:grid-cols-3">
+              <div className="mt-8 grid gap-4 border-t border-white/10 pt-5 sm:grid-cols-3">
                 {caseStudy.metrics.map((metric) => (
                   <div key={metric.label}>
-                    <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-slate-500 uppercase">
+                    <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/42 uppercase">
                       {metric.label}
                     </p>
-                    <p className="mt-2 text-[1rem] leading-7 text-slate-900">
+                    <p className="mt-2 text-[1rem] leading-7 text-white/82">
                       {metric.value}
                     </p>
                   </div>
@@ -132,146 +134,147 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <MediaComposition
               imageSrc={imageSrc}
               imageAlt={caseStudy.title}
+              tone="dark"
               stageVariant={stageVariant}
               compactStage
-              note={`${caseStudy.clientName} · ${caseStudy.industry}`}
+              note={`${caseStudy.clientType} · ${caseStudy.industry}`}
               notePlacement="bottom-left"
               heightClassName="h-[320px] sm:h-[400px] lg:h-[440px]"
             />
           </div>
         </div>
-      </section>
+      </SectionShell>
 
-      <section className="pt-24">
-        <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-6 lg:px-10">
-          <div className="grid gap-0 border-y border-[var(--border-strong)] lg:grid-cols-2">
-            <article className="border-b border-[var(--border)] bg-white/55 px-0 py-7 lg:border-b-0 lg:border-r lg:px-6">
-              <p className="text-[0.72rem] font-semibold tracking-[0.22em] text-[var(--accent)] uppercase">
-                Problem
-              </p>
-              <h2 className="mt-4 font-[family:var(--font-heading)] text-[1.9rem] font-normal leading-none text-slate-950">
-                The challenge
-              </h2>
-              <p className="mt-4 max-w-2xl text-[0.98rem] leading-7 text-slate-600">
-                {caseStudy.problem}
-              </p>
-            </article>
-
-            <article className="bg-white/55 px-0 py-7 lg:px-6">
-              <p className="text-[0.72rem] font-semibold tracking-[0.22em] text-[var(--accent)] uppercase">
-                Solution
-              </p>
-              <h2 className="mt-4 font-[family:var(--font-heading)] text-[1.9rem] font-normal leading-none text-slate-950">
-                What Aksora Labs built
-              </h2>
-              <p className="mt-4 max-w-2xl text-[0.98rem] leading-7 text-slate-600">
-                {caseStudy.solution}
-              </p>
-            </article>
-          </div>
+      <SectionShell className="pt-20 sm:pt-24">
+        <div className="border-t border-white/10 pt-6">
+          <SectionHeading
+            eyebrow="Problem and Response"
+            title="The challenge and the product answer."
+            description="The work is presented through business context first, then the response built around it."
+            tone="light"
+          />
         </div>
-      </section>
 
-      <section className="pt-24">
-        <div className="mx-auto grid w-full max-w-[1760px] gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-          <div>
-            <p className="text-[0.72rem] font-semibold tracking-[0.22em] text-[var(--accent)] uppercase">
-              Delivery scope
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <article className="editorial-note-panel editorial-note-panel--dark p-8">
+            <p className="relative text-[0.72rem] font-semibold tracking-[0.22em] text-[#d8b6bc] uppercase">
+              Problem
             </p>
-            <div className="mt-6 rule-list">
+            <h2 className="relative mt-5 font-[family:var(--font-heading)] text-[2.05rem] font-normal leading-[0.98] text-white">
+              What needed to change
+            </h2>
+            <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
+              {caseStudy.problem}
+            </p>
+          </article>
+
+          <article className="editorial-note-panel editorial-note-panel--dark p-8">
+            <p className="relative text-[0.72rem] font-semibold tracking-[0.22em] text-[#d8b6bc] uppercase">
+              Solution
+            </p>
+            <h2 className="relative mt-5 font-[family:var(--font-heading)] text-[2.05rem] font-normal leading-[0.98] text-white">
+              What Aksora Labs built
+            </h2>
+            <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
+              {caseStudy.solution}
+            </p>
+          </article>
+        </div>
+      </SectionShell>
+
+      <SectionShell className="pt-24">
+        <div className="border-t border-white/10 pt-6">
+          <SectionHeading
+            eyebrow="Scope and Outcome"
+            title="What was delivered and what changed."
+            description="Delivery scope, technical coverage, and practical business effect in one view."
+            tone="light"
+          />
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <article className="editorial-note-panel editorial-note-panel--dark p-8">
+            <p className="relative text-[0.72rem] font-semibold tracking-[0.22em] text-[#d8b6bc] uppercase">
+              Delivery Scope
+            </p>
+            <div className="relative mt-6 rule-list">
               {caseStudy.features.map((feature) => (
                 <div
                   key={feature}
-                  className="flex items-start gap-3 py-4 text-[0.98rem] leading-7 text-slate-700"
+                  className="flex items-start gap-3 py-4 text-[0.98rem] leading-7 text-white/72"
                 >
                   <BadgeCheck className="mt-1 h-4 w-4 shrink-0 text-[var(--accent)]" />
                   <span>{feature}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="relative mt-6 flex flex-wrap gap-2">
               {caseStudy.techStack.map((item) => (
                 <span
                   key={item}
-                  className="border border-[var(--border)] px-3 py-1 text-xs font-medium text-slate-700"
+                  className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.12em] text-white/66 uppercase"
                 >
                   {item}
                 </span>
               ))}
             </div>
-          </div>
+          </article>
 
-          <div>
-            <p className="text-[0.72rem] font-semibold tracking-[0.22em] text-[var(--accent)] uppercase">
-              Outcomes
+          <article className="editorial-note-panel editorial-note-panel--dark p-8">
+            <p className="relative text-[0.72rem] font-semibold tracking-[0.22em] text-[#d8b6bc] uppercase">
+              Outcome
             </p>
-            <div className="mt-6 grid gap-8 border-t border-[var(--border-strong)] pt-6">
-              <div className="grid gap-4">
-                {caseStudy.outcomes.map((outcome) => (
-                  <p
-                    key={outcome}
-                    className="border-b border-[var(--border)] pb-4 text-[0.98rem] leading-7 text-slate-700 last:border-b-0 last:pb-0"
-                  >
-                    {outcome}
-                  </p>
-                ))}
-              </div>
-
-              <div className="space-y-4 text-[0.98rem] leading-7 text-slate-600">
-                {caseStudy.detailNarrative.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
+            <div className="relative mt-6 space-y-4">
+              {caseStudy.outcomes.map((outcome) => (
+                <p
+                  key={outcome}
+                  className="border-b border-white/10 pb-4 text-[0.98rem] leading-7 text-white/72 last:border-b-0 last:pb-0"
+                >
+                  {outcome}
+                </p>
+              ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="pt-24">
-        <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-6 lg:px-10">
-          <div className="flex items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <p className="text-[0.72rem] font-semibold tracking-[0.24em] text-[var(--accent)] uppercase">
-                Related work
-              </p>
-              <h2 className="mt-4 text-balance font-[family:var(--font-heading)] text-3xl font-normal tracking-tight text-slate-950 sm:text-4xl">
-                More case study structures
-              </h2>
+            <div className="relative mt-8 space-y-4 border-t border-white/10 pt-6 text-[0.98rem] leading-8 text-white/64">
+              {caseStudy.detailNarrative.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
-            <Link
-              href="/work"
-              className="hidden items-center gap-2 text-sm font-semibold text-slate-900 underline underline-offset-4 lg:inline-flex"
-            >
-              View all work
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="mt-10 grid gap-8 xl:grid-cols-2">
-            {relatedStudies.map((item) => (
-              <CaseStudyCard key={item.slug} caseStudy={item} />
-            ))}
-          </div>
+          </article>
         </div>
-      </section>
+      </SectionShell>
 
-      <section className="pb-8 pt-24">
-        <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-6 lg:px-10">
-          <CtaSection
-            eyebrow="Next Conversation"
-            title="Use the work to judge the thinking, the craft, and the execution."
-            description="The strongest portfolios make business context and delivery judgment easy to assess."
-            imageSrc={imageSrc}
-            imageAlt={caseStudy.title}
-            stageVariant={stageVariant}
-            points={[
-              "See how context shapes the product",
-              "Review decisions, not just final screens",
-              "Assess whether the standard fits your project",
-            ]}
+      <SectionShell className="pt-24">
+        <div className="border-t border-white/10 pt-6">
+          <SectionHeading
+            eyebrow="Related Work"
+            title="More case study structures."
+            description="Additional examples across website, product, and internal systems work."
+            tone="light"
           />
         </div>
-      </section>
-    </>
+
+        <div className="mt-10 grid gap-8 xl:grid-cols-2">
+          {relatedStudies.map((item) => (
+            <CaseStudyCard key={item.slug} caseStudy={item} />
+          ))}
+        </div>
+      </SectionShell>
+
+      <SectionShell className="pb-8 pt-24">
+        <CtaSection
+          eyebrow="Next Conversation"
+          title="Look at the product, the decisions, and the result together."
+          description="The work is presented so business context, product choices, and delivery quality are easy to understand."
+          imageSrc={imageSrc}
+          imageAlt={caseStudy.title}
+          stageVariant={stageVariant}
+          points={[
+            "Business context connected to product choices",
+            "Final execution backed by clear reasoning",
+            "A standard you can compare against your project",
+          ]}
+        />
+      </SectionShell>
+    </div>
   );
 }

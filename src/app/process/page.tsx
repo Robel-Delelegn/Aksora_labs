@@ -42,33 +42,35 @@ export default function ProcessPage() {
   }));
 
   return (
-    <>
+    <div className="site-dark-page">
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Process"
           title="A delivery model designed to keep clarity high and waste low."
-          description="The process exists to make the work easier to trust, easier to steer, and easier to launch well."
+          description="A clear delivery model that keeps the work easy to steer, review, and launch well."
           badges={["Scope", "Design", "Build", "Launch"]}
+          tone="dark"
           stageVariant="process"
           mediaSrc="/images/process-artifacts-editorial-v1.png"
           mediaAlt="Product planning artifacts and wireframes"
-          mediaNote="The process should look deliberate long before launch."
+          mediaNote="Clear scope, visible decisions, and disciplined delivery."
         />
       </SectionShell>
 
       <SectionShell className="pt-20 sm:pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Six Steps"
             title="From first diagnosis to post-launch support."
             description="Each step exists to remove a specific kind of project risk."
+            tone="light"
           />
         </div>
 
         <div className="mt-10">
           <EditorialCarousel
             items={processCards}
-            theme="warm"
+            theme="dark"
             variant="stacked"
             columns={{ tablet: 2, desktop: 3 }}
           />
@@ -76,10 +78,11 @@ export default function ProcessPage() {
       </SectionShell>
 
       <SectionShell className="pt-24">
-        <div className="border-t border-[var(--border-strong)] pt-6">
+        <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Operating Rhythm"
             title="How the engagement stays calm."
+            tone="light"
           />
         </div>
 
@@ -102,11 +105,14 @@ export default function ProcessPage() {
               body: "Documentation and context make the next phase easier to run.",
             },
           ].map((item) => (
-            <article key={item.title} className="editorial-note-panel p-8">
-              <h3 className="relative font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-slate-950">
+            <article
+              key={item.title}
+              className="editorial-note-panel editorial-note-panel--dark p-8"
+            >
+              <h3 className="relative font-[family:var(--font-heading)] text-[2rem] font-normal leading-[0.98] text-white">
                 {item.title}
               </h3>
-              <p className="relative mt-4 text-[0.98rem] leading-8 text-slate-600">
+              <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
                 {item.body}
               </p>
             </article>
@@ -119,17 +125,18 @@ export default function ProcessPage() {
           <SectionHeading
             eyebrow="FAQ"
             title="Process questions, handled directly."
-            description="The process should reduce uncertainty before the build starts."
+            description="Clear answers on rhythm, input, and documentation."
+            tone="light"
           />
-          <FaqList items={processFaqs} />
+          <FaqList items={processFaqs} tone="dark" />
         </div>
       </SectionShell>
 
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Start Well"
-          title="The easiest projects to trust are the ones with a process you can see."
-          description="If the work is strategically important, the operating model should feel sharp from the start."
+          title="A clear process makes delivery easier to trust."
+          description="Start with the right structure, cadence, and decision points from day one."
           imageSrc="/images/process-artifacts-editorial-v1.png"
           imageAlt="Product process and planning materials"
           stageVariant="process"
@@ -140,6 +147,6 @@ export default function ProcessPage() {
           ]}
         />
       </SectionShell>
-    </>
+    </div>
   );
 }
