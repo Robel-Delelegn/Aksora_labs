@@ -4,9 +4,12 @@ import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import {
+  countWords,
   contactSchema,
+  PROJECT_BRIEF_MIN_WORDS,
   type ContactFormValues,
 } from "@/lib/contact-schema";
+import { siteConfig } from "@/lib/site-data";
 
 const defaultValues: ContactFormValues = {
   name: "",
@@ -36,6 +39,7 @@ export function ContactForm({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [serverMessage, setServerMessage] = useState("");
   const isDark = tone === "dark";
+  const messageWordCount = countWords(values.message);
 
   function updateValue<K extends keyof ContactFormValues>(
     key: K,
@@ -92,7 +96,7 @@ export function ContactForm({
         });
         setServerMessage(
           payload.message ??
-            "The inquiry could not be submitted. Please try again.",
+            "We couldn't send your message. Please try again.",
         );
         return;
       }
@@ -101,7 +105,7 @@ export function ContactForm({
       setValues(defaultValues);
     } catch {
       setServerMessage(
-        "The inquiry could not be submitted right now. Please email hello@aksoralabs.com.",
+        `We couldn't send your message right now. Please email ${siteConfig.email}.`,
       );
     } finally {
       setIsPending(false);
@@ -129,16 +133,16 @@ export function ContactForm({
                 isDark ? "text-white" : "text-slate-950"
               }`}
             >
-              Inquiry received
+              Message received
             </h3>
             <p
               className={`mt-3 max-w-xl text-pretty leading-7 ${
                 isDark ? "text-white/72" : "text-slate-700"
               }`}
             >
-              Thanks for reaching out. The project brief has been captured. If
-              the fit is strong, the next step is a focused discovery
-              conversation around goals, constraints, and delivery direction.
+              Thanks for reaching out. We have the brief. If the fit looks
+              right, the next step is a focused conversation about goals,
+              constraints, and the best way to tackle the work.
             </p>
           </div>
         </div>
@@ -164,7 +168,7 @@ export function ContactForm({
           value={values.name}
           error={errors.name}
           onChange={(value) => updateValue("name", value)}
-          placeholder="Your name"
+          placeholder="Your full name"
           autoComplete="name"
           required
         />
@@ -187,7 +191,7 @@ export function ContactForm({
           value={values.company ?? ""}
           error={errors.company}
           onChange={(value) => updateValue("company", value)}
-          placeholder="Company name"
+          placeholder="Company or team"
           autoComplete="organization"
         />
         <SelectField
@@ -202,7 +206,7 @@ export function ContactForm({
             "Web application",
             "Mobile application",
             "Internal system",
-            "Product strategy and design",
+            "Product design and strategy",
             "Performance or modernization",
           ]}
           required
@@ -264,11 +268,25 @@ export function ContactForm({
                 ? "border-white/12"
                 : "border-slate-300"
           }`}
-          placeholder="What are you building, who is it for, and what matters most right now?"
+          placeholder="What are you trying to build or fix? Who is it for? What matters most right now?"
           aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "message-error" : undefined}
+          aria-describedby={errors.message ? "message-hint message-error" : "message-hint"}
           required
         />
+        <p
+          id="message-hint"
+          className={`mt-2 text-sm ${
+            errors.message
+              ? isDark
+                ? "text-white/64"
+                : "text-slate-500"
+              : isDark
+                ? "text-white/56"
+                : "text-slate-500"
+          }`}
+        >
+          {`Minimum ${PROJECT_BRIEF_MIN_WORDS} words. Current: ${messageWordCount}.`}
+        </p>
         {errors.message ? (
           <p
             id="message-error"
@@ -316,8 +334,8 @@ export function ContactForm({
             isDark ? "text-white/56" : "text-slate-500"
           }`}
         >
-          Share the key context. Aksora Labs will review the brief and respond
-          with the right next step.
+          Share the important context. We will review it and reply with the
+          best next step.
         </p>
         <button
           type="submit"
@@ -328,7 +346,7 @@ export function ContactForm({
               : "border-[var(--accent)] bg-[var(--accent)] hover:bg-[var(--accent-strong)]"
           }`}
         >
-          {isPending ? "Submitting..." : "Request a discovery call"}
+          {isPending ? "Sending..." : "Send project brief"}
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
@@ -432,6 +450,19 @@ function SelectField({
   required = false,
 }: SelectFieldProps) {
   const isDark = tone === "dark";
+  const selectStyle = isDark
+    ? {
+        colorScheme: "dark" as const,
+        backgroundColor: "rgba(255, 255, 255, 0.03)",
+        color: "#ffffff",
+      }
+    : undefined;
+  const optionStyle = isDark
+    ? { backgroundColor: "#090a0f", color: "#ffffff" }
+    : { backgroundColor: "#ffffff", color: "#0f172a" };
+  const placeholderOptionStyle = isDark
+    ? { backgroundColor: "#090a0f", color: "rgba(255, 255, 255, 0.72)" }
+    : { backgroundColor: "#ffffff", color: "#64748b" };
 
   return (
     <div>
@@ -459,14 +490,16 @@ function SelectField({
               ? "border-white/12"
               : "border-slate-300"
         }`}
-        style={isDark ? { colorScheme: "dark" } : undefined}
+        style={selectStyle}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${name}-error` : undefined}
         required={required}
       >
-        <option value="">Select an option</option>
+        <option value="" style={placeholderOptionStyle}>
+          Choose an option
+        </option>
         {options.map((option) => (
-          <option key={option} value={option}>
+          <option key={option} value={option} style={optionStyle}>
             {option}
           </option>
         ))}

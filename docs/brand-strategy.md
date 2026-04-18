@@ -15,7 +15,7 @@ Primary pages:
 Home page sequence:
 
 1. Hero with immediate clarity on what Aksora Labs does
-2. Above-the-fold trust signals and placeholder client identity strip
+2. Above-the-fold trust signals and a sector/client-context strip
 3. Services summary
 4. Why Aksora Labs
 5. Process
@@ -70,7 +70,7 @@ Used intentionally:
 - Authority framing: strong editorial design and specific operational language
 - Status perception: premium visual rhythm, strong contrast, disciplined copy
 - Risk reversal: senior-led delivery, visible milestones, maintainable architecture, support language
-- Social proof structure: sample case studies, testimonial formatting, and client-logo layout ready for real references
+- Social proof structure: real case studies, testimonial formatting, and supporting client references where approved
 
 Avoided intentionally:
 
@@ -122,13 +122,12 @@ The contact form currently supports:
 
 - Client-side validation
 - Server-side validation
+- Direct Telegram delivery
+- Optional SMTP email fallback
 - Optional webhook forwarding through `CONTACT_WEBHOOK_URL`
-- Safe fallback to server logging during setup
 
 Before launch, update:
 
-- Placeholder social URLs
-- Sample case studies
-- Sample testimonials
-- Placeholder client identities
+- Social URLs where needed
+- Any client details that require tighter anonymization or approval
 - Site URL and contact email

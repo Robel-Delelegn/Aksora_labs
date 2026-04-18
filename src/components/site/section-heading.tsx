@@ -30,13 +30,13 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`text-balance font-[family:var(--font-heading)] text-[2.5rem] font-normal leading-[1.02] tracking-tight sm:text-[3rem] lg:text-[3.35rem] ${titleClassName}`}
+        className={`text-balance font-[family:var(--font-heading)] text-[2.1rem] font-normal leading-[1.04] tracking-tight sm:text-[2.7rem] lg:text-[3.35rem] ${titleClassName}`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-5 text-pretty text-base leading-8 sm:text-lg ${descriptionClassName}`}
+          className={`mt-4 text-pretty text-[0.98rem] leading-7 sm:mt-5 sm:text-lg sm:leading-8 ${descriptionClassName}`}
         >
           {description}
         </p>

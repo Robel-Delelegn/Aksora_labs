@@ -13,7 +13,7 @@ export function SectionShell({
 }: SectionShellProps) {
   return (
     <section id={id} className={className}>
-      <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1760px] px-4 sm:px-6 lg:px-10">
         {children}
       </div>
     </section>

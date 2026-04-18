@@ -7,12 +7,13 @@ import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { buildMetadata } from "@/lib/metadata";
+import { getCaseStudyImage, siteImages } from "@/lib/site-images";
 import { caseStudies } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Selected Work | Aksora Labs",
   description:
-    "Review Aksora Labs case study pages for premium website, product, and internal system work.",
+    "A few case studies from Aksora Labs across product, operations, and customer-facing platforms.",
   path: "/work",
 });
 
@@ -22,14 +23,7 @@ export default function WorkPage() {
     eyebrow: caseStudy.badge,
     title: caseStudy.title,
     description: caseStudy.summary,
-    imageSrc:
-      caseStudy.industry === "Finance"
-        ? "/images/operations-control-editorial-v1.png"
-        : caseStudy.industry === "Healthcare"
-          ? "/images/hero-studio-editorial-v1.png"
-          : caseStudy.industry === "Operations"
-            ? "/images/service-systems-editorial-v1.png"
-            : "/images/editorial-banner-studio-v1.png",
+    imageSrc: getCaseStudyImage(caseStudy.slug),
     imageAlt: caseStudy.title,
     href: `/work/${caseStudy.slug}`,
     linkLabel: "View case study",
@@ -41,14 +35,14 @@ export default function WorkPage() {
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Selected Work"
-          title="Case studies that show the problem, the response, and the result."
-          description="Aksora Labs presents work through problem, solution, delivery scope, and business impact."
+          title="A few projects we've worked on."
+          description="Each case study covers what the team was dealing with, what we built, and what changed after that."
           badges={["Problem", "Build", "Outcome"]}
           tone="dark"
           stageVariant="work"
-          mediaSrc="/images/operations-control-editorial-v1.png"
+          mediaSrc={siteImages.work.hero}
           mediaAlt="Enterprise operations scene with layered dashboards"
-          mediaNote="Business context, delivery scope, and measurable impact."
+          mediaNote="What the problem was, what we built, and what changed."
         />
       </SectionShell>
 
@@ -56,8 +50,8 @@ export default function WorkPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Portfolio"
-            title="Examples across finance, healthcare, and operations."
-            description="Enough context to understand the business problem, the product response, and the outcome."
+            title="Work across finance, healthcare, and operations."
+            description="A straightforward look at the kinds of problems we've helped teams solve."
             tone="light"
           />
         </div>
@@ -75,8 +69,8 @@ export default function WorkPage() {
       <SectionShell className="pt-24">
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
-            eyebrow="What Strong Work Signals"
-            title="What strong work makes clear."
+            eyebrow="What Matters"
+            title="What we try to make clear in every case study."
             tone="light"
           />
         </div>
@@ -84,16 +78,16 @@ export default function WorkPage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {[
             {
-              title: "Business context",
-              body: "What was at stake and why the project mattered.",
+              title: "What was going on",
+              body: "What the team was dealing with before the project started.",
             },
             {
-              title: "Delivery judgment",
-              body: "How the product was shaped, not only how it looked.",
+              title: "Why it was built that way",
+              body: "The product decisions behind the build, not just the final screens.",
             },
             {
-              title: "Outcome signal",
-              body: "What changed for users, operations, or the business.",
+              title: "What changed",
+              body: "What got easier, faster, or clearer once the work was live.",
             },
           ].map((item) => (
             <article
@@ -114,15 +108,15 @@ export default function WorkPage() {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Next Step"
-          title="Execution matters as much as the idea."
-          description="The portfolio shows how Aksora Labs approaches product decisions, delivery, and business impact."
-          imageSrc="/images/operations-control-editorial-v1.png"
+          title="If you're working through something similar, we can talk it through."
+          description="The point of these case studies is to give you a feel for how we work and how we make product decisions."
+          imageSrc={siteImages.work.cta}
           imageAlt="Enterprise software operations environment"
           stageVariant="work"
           points={[
-            "Business context and product response",
-            "Clear scope, outcomes, and delivery decisions",
-            "Premium presentation with substance behind it",
+            "Talk through the actual problem first",
+            "Figure out what needs to change",
+            "Leave with a clear next step",
           ]}
         />
       </SectionShell>

@@ -9,11 +9,11 @@ export default function NotFound() {
           Page not found
         </p>
         <h1 className="mt-5 text-balance font-[family:var(--font-heading)] text-4xl font-normal tracking-tight text-slate-950 sm:text-5xl">
-          The page you were looking for does not exist.
+          That page is not here.
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-8 text-slate-600 sm:text-lg">
-          Return to the homepage or go straight to the contact page to start a
-          discovery conversation.
+          Head back to the homepage, or go to the contact page if you meant to
+          get in touch.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <ButtonLink href="/">Home</ButtonLink>

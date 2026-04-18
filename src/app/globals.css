@@ -1,73 +1,11 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Canela Web";
-  src:
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/canela/Canela-Regular-Web.woff2")
-      format("woff2"),
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/canela/Canela-Regular-Web.woff")
-      format("woff");
-  font-display: swap;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Canela Deck Web";
-  src:
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/canela/CanelaDeck-Regular-Web.woff2")
-      format("woff2"),
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/canela/CanelaDeck-Regular-Web.woff")
-      format("woff");
-  font-display: swap;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "GT America Standard Regular";
-  src:
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Regular.woff2")
-      format("woff2"),
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Regular.woff")
-      format("woff");
-  font-display: swap;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "GT America Standard Medium";
-  src:
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Medium.woff2")
-      format("woff2"),
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Medium.woff")
-      format("woff");
-  font-display: swap;
-  font-weight: 500 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "GT America Standard Bold";
-  src:
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Bold.woff2")
-      format("woff2"),
-    url("https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Bold.woff")
-      format("woff");
-  font-display: swap;
-  font-weight: 700;
-  font-style: normal;
-}
-
 :root {
-  --font-body: "GT America Standard Regular", "Helvetica Neue", Arial, sans-serif;
-  --font-body-medium:
-    "GT America Standard Medium", "Helvetica Neue", Arial, sans-serif;
-  --font-body-bold:
-    "GT America Standard Bold", "Helvetica Neue", Arial, sans-serif;
-  --font-heading: "Canela Deck Web", Georgia, serif;
-  --font-display: "Canela Web", Georgia, serif;
+  --font-body: var(--font-body-family), "Helvetica Neue", Arial, sans-serif;
+  --font-body-medium: var(--font-body-family), "Helvetica Neue", Arial, sans-serif;
+  --font-body-bold: var(--font-body-family), "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-heading-family), Georgia, serif;
+  --font-display: var(--font-heading-family), Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --background: #f5f1ea;
   --foreground: #171411;
@@ -104,11 +42,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   position: relative;
   min-height: 100vh;
+  overflow-x: clip;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
@@ -648,6 +588,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(145deg, rgba(139, 35, 50, 0.08), transparent 34%);
   opacity: 0;
   transition: opacity 260ms ease;
@@ -680,6 +621,15 @@ button {
 .editorial-note-panel--dark:hover {
   border-color: rgba(255, 255, 255, 0.16);
   box-shadow: 0 34px 86px rgba(0, 0, 0, 0.34);
+}
+
+.contact-info-stack {
+  align-self: start;
+}
+
+.contact-info-card {
+  min-height: 0;
+  height: auto;
 }
 
 .site-dark-page {
@@ -1012,22 +962,35 @@ button {
 }
 
 @media (max-width: 767px) {
+  .capability-carousel-progress {
+    width: min(10rem, 34vw);
+  }
+
   .capability-carousel-card {
-    min-width: min(78vw, 22rem);
-    flex-basis: min(78vw, 22rem);
+    min-width: min(82vw, 19rem);
+    flex-basis: min(82vw, 19rem);
+    scroll-snap-stop: always;
   }
 
   .capability-carousel-card__surface {
-    min-height: 31rem;
+    min-height: 28rem;
   }
 
   .capability-carousel-card__title {
-    font-size: 1.7rem;
+    max-width: 13ch;
+    font-size: 1.55rem;
   }
 
   .capability-carousel-card__summary {
     font-size: 0.88rem;
     line-height: 1.65;
+  }
+
+  .capability-carousel-card__meta,
+  .capability-carousel-card__content,
+  .capability-carousel-card__footer {
+    left: 0.95rem;
+    right: 0.95rem;
   }
 }
 
@@ -2037,6 +2000,7 @@ button {
   gap: 0.65rem;
   color: #221d1b;
   font-family: var(--font-body-medium), sans-serif;
+  font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.02em;
 }
@@ -2675,6 +2639,170 @@ button {
 }
 
 @media (max-width: 767px) {
+  .home-work-feature {
+    border-radius: 28px;
+  }
+
+  .home-work-feature__media-note {
+    left: 1rem;
+    bottom: 1rem;
+    max-width: 76%;
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
+  .home-work-feature__panel {
+    padding: 1.35rem;
+  }
+
+  .home-work-feature__title {
+    max-width: 11ch;
+    font-size: clamp(1.95rem, 9vw, 2.75rem);
+  }
+
+  .home-work-feature__summary {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .floating-stage__plane {
+    min-height: 420px;
+  }
+
+  .floating-stage__mesh {
+    background-size: 52px 52px;
+  }
+
+  .floating-stage__orb--one {
+    right: 10%;
+    height: 132px;
+    width: 132px;
+  }
+
+  .floating-stage__orb--two {
+    height: 90px;
+    width: 90px;
+  }
+
+  .floating-stage__ring {
+    top: 18%;
+    height: 160px;
+    width: 160px;
+  }
+
+  .floating-stage__panel--main {
+    left: 5%;
+    top: 10%;
+    width: 70%;
+    padding: 0.8rem;
+    border-radius: 22px;
+  }
+
+  .floating-stage__panel--phone {
+    right: 5%;
+    top: 31%;
+    width: 30%;
+    min-width: 114px;
+    min-height: 190px;
+    padding: 0.7rem;
+    border-radius: 22px;
+  }
+
+  .floating-stage__headline {
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .floating-stage__metric-row,
+  .floating-stage__mini-grid {
+    gap: 0.55rem;
+  }
+
+  .floating-stage__metric--large,
+  .floating-stage__metric--medium {
+    min-height: 66px;
+  }
+
+  .floating-stage__chart {
+    min-height: 64px;
+    gap: 0.4rem;
+  }
+
+  .floating-stage__mini-card {
+    min-height: 52px;
+    border-radius: 14px;
+  }
+
+  .floating-stage__phone-card {
+    min-height: 54px;
+    border-radius: 14px;
+  }
+
+  .floating-stage__phone-card--short {
+    min-height: 42px;
+  }
+
+  .floating-stage__phone-bars {
+    min-height: 78px;
+    gap: 0.3rem;
+  }
+
+  .floating-stage__chip {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+  }
+
+  .floating-stage__sidecard,
+  .floating-stage__dock {
+    max-width: 152px;
+    padding: 0.75rem 0.85rem;
+    border-radius: 18px;
+  }
+
+  .floating-stage__dock {
+    left: 7%;
+    min-width: 140px;
+  }
+
+  .floating-stage__side-value {
+    font-size: 1.15rem;
+  }
+
+  .floating-stage__side-note {
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+
+  .floating-stage--compact .floating-stage__plane {
+    min-height: 220px;
+  }
+
+  .floating-stage--compact .floating-stage__orb,
+  .floating-stage--compact .floating-stage__ring,
+  .floating-stage--compact .floating-stage__wire,
+  .floating-stage--compact .floating-stage__sidecard,
+  .floating-stage--compact .floating-stage__dock,
+  .floating-stage--compact .floating-stage__chip--c {
+    display: none;
+  }
+
+  .floating-stage--compact .floating-stage__panel--main {
+    left: 4%;
+    top: 12%;
+    width: 64%;
+    padding: 0.72rem;
+  }
+
+  .floating-stage--compact .floating-stage__panel--phone {
+    right: 4%;
+    top: 22%;
+    width: 28%;
+    min-width: 96px;
+    min-height: 155px;
+    padding: 0.62rem;
+  }
+
   .capability-spotlight {
     min-height: 440px;
   }

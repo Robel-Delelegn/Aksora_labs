@@ -28,24 +28,24 @@ export function MediaComposition({
   stageVariant,
   stagePlacement = "right",
   compactStage = false,
-  stageWidthClassName = "w-[44%] min-w-[220px] max-w-[340px]",
+  stageWidthClassName = "w-[36%] min-w-[132px] max-w-[200px] sm:w-[40%] sm:min-w-[180px] sm:max-w-[280px] lg:w-[44%] lg:min-w-[220px] lg:max-w-[340px]",
   note,
   notePlacement = "top-left",
-  heightClassName = "h-[320px] sm:h-[400px] lg:h-[440px]",
+  heightClassName = "h-[260px] sm:h-[380px] lg:h-[440px]",
   className = "",
 }: MediaCompositionProps) {
   const stagePositionClassName =
     stagePlacement === "left"
-      ? "left-4 sm:left-6"
-      : "right-4 sm:right-6";
+      ? "left-3 sm:left-6"
+      : "right-3 sm:right-6";
   const isDark = tone === "dark";
 
   const notePositionClassName =
     notePlacement === "bottom-left"
-      ? "bottom-4 left-4 sm:bottom-6 sm:left-6"
+      ? "bottom-3 left-3 sm:bottom-6 sm:left-6"
       : notePlacement === "bottom-right"
-        ? "bottom-4 right-4 sm:bottom-6 sm:right-6"
-        : "left-4 top-4 sm:left-6 sm:top-6";
+        ? "bottom-3 right-3 sm:bottom-6 sm:right-6"
+        : "left-3 top-3 sm:left-6 sm:top-6";
 
   return (
     <div
@@ -66,15 +66,15 @@ export function MediaComposition({
 
         {note ? (
           <div
-            className={`absolute ${notePositionClassName} max-w-[260px] rounded-[18px] border border-white/14 bg-[#171411]/74 px-4 py-3 text-white backdrop-blur-md`}
+            className={`absolute ${notePositionClassName} max-w-[180px] rounded-[16px] border border-white/14 bg-[#171411]/74 px-3 py-2.5 text-white backdrop-blur-md sm:max-w-[220px] sm:rounded-[18px] sm:px-4 sm:py-3 lg:max-w-[260px]`}
           >
-            <p className="text-[0.72rem] leading-6 text-white/82">{note}</p>
+            <p className="text-[0.68rem] leading-5 text-white/82 sm:text-[0.72rem] sm:leading-6">{note}</p>
           </div>
         ) : null}
 
         {stageVariant ? (
           <div
-            className={`absolute bottom-4 z-10 ${stageWidthClassName} ${stagePositionClassName} sm:bottom-6`}
+            className={`absolute bottom-3 z-10 ${stageWidthClassName} ${stagePositionClassName} sm:bottom-6`}
           >
             <FloatingStage
               variant={stageVariant}

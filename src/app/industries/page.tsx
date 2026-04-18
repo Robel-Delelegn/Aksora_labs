@@ -7,12 +7,13 @@ import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { buildMetadata } from "@/lib/metadata";
+import { siteImages } from "@/lib/site-images";
 import { industries } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Industries | Aksora Labs",
   description:
-    "Aksora Labs works with startups, SMEs, and enterprise teams across SaaS, healthcare, finance, operations, commerce, and professional services.",
+    "Aksora Labs works with teams across SaaS, healthcare, finance, operations, commerce, and professional services.",
   path: "/industries",
 });
 
@@ -23,7 +24,7 @@ export default function IndustriesPage() {
       eyebrow: "SaaS and technology",
       title: industries[0].title,
       description: industries[0].description,
-      imageSrc: "/images/service-webapp-editorial-v1.png",
+      imageSrc: siteImages.industries.cards.saas,
       imageAlt: industries[0].title,
       href: "/contact",
       linkLabel: "Discuss your sector",
@@ -33,7 +34,7 @@ export default function IndustriesPage() {
       eyebrow: "Healthcare",
       title: industries[1].title,
       description: industries[1].description,
-      imageSrc: "/images/hero-studio-editorial-v1.png",
+      imageSrc: siteImages.industries.cards.healthcare,
       imageAlt: industries[1].title,
       href: "/contact",
       linkLabel: "Discuss your sector",
@@ -43,7 +44,7 @@ export default function IndustriesPage() {
       eyebrow: "Finance",
       title: industries[2].title,
       description: industries[2].description,
-      imageSrc: "/images/operations-control-editorial-v1.png",
+      imageSrc: siteImages.industries.cards.finance,
       imageAlt: industries[2].title,
       href: "/contact",
       linkLabel: "Discuss your sector",
@@ -53,7 +54,7 @@ export default function IndustriesPage() {
       eyebrow: "Operations",
       title: industries[3].title,
       description: industries[3].description,
-      imageSrc: "/images/service-systems-editorial-v1.png",
+      imageSrc: siteImages.industries.cards.operations,
       imageAlt: industries[3].title,
       href: "/contact",
       linkLabel: "Discuss your sector",
@@ -63,7 +64,7 @@ export default function IndustriesPage() {
       eyebrow: "Commerce",
       title: industries[4].title,
       description: industries[4].description,
-      imageSrc: "/images/service-website-editorial-v1.png",
+      imageSrc: siteImages.industries.cards.commerce,
       imageAlt: industries[4].title,
       href: "/contact",
       linkLabel: "Discuss your sector",
@@ -73,7 +74,7 @@ export default function IndustriesPage() {
       eyebrow: "Professional services",
       title: industries[5].title,
       description: industries[5].description,
-      imageSrc: "/images/editorial-banner-studio-v1.png",
+      imageSrc: siteImages.industries.cards.professionalServices,
       imageAlt: industries[5].title,
       href: "/contact",
       linkLabel: "Discuss your sector",
@@ -85,14 +86,14 @@ export default function IndustriesPage() {
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Industries"
-          title="Different sectors. Different constraints. The same standard of execution."
-          description="Aksora Labs adapts the delivery lens to the buyer, the users, and the operational context."
+          title="Same craft, different business realities."
+          description="We adjust the work to the users, the stakes, and the way the business actually runs."
           badges={["Startups", "SMEs", "Enterprise", "Operational software"]}
           tone="dark"
           stageVariant="industries"
-          mediaSrc="/images/operations-control-editorial-v1.png"
+          mediaSrc={siteImages.industries.hero}
           mediaAlt="Editorial enterprise operations environment"
-          mediaNote="Different buying contexts demand different signals of trust and control."
+          mediaNote="Different teams buy differently, work differently, and need different kinds of reassurance."
         />
       </SectionShell>
 
@@ -100,7 +101,7 @@ export default function IndustriesPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Focus Areas"
-            title="Where clarity, reliability, and digital credibility matter."
+            title="Where we tend to do our best work."
             tone="light"
           />
         </div>
@@ -119,7 +120,7 @@ export default function IndustriesPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Buyer Context"
-            title="How the buying lens changes."
+            title="How needs change by client type."
             tone="light"
           />
         </div>
@@ -128,15 +129,15 @@ export default function IndustriesPage() {
           {[
             {
               title: "Startup founders",
-              body: "Need speed, product judgment, and a partner who can help shape scope.",
+              body: "Usually need speed, product judgment, and help shaping scope before the runway disappears.",
             },
             {
               title: "SME leadership teams",
-              body: "Need systems that improve credibility and reduce operational drag.",
+              body: "Usually need systems that cut operational drag and make the business easier to understand.",
             },
             {
               title: "Enterprise stakeholders",
-              body: "Need reliability, governance, and confidence inside larger constraints.",
+              body: "Usually need reliability, governance, and confidence inside bigger constraints and slower approval loops.",
             },
           ].map((item) => (
             <article
@@ -157,15 +158,15 @@ export default function IndustriesPage() {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Get Specific"
-          title="The best projects start when the business context is discussed as seriously as the software."
-          description="The right solution depends on the users, stakeholders, and operating reality of the business."
-          imageSrc="/images/operations-control-editorial-v1.png"
+          title="The best solution depends on how the business really works."
+          description="Users, approvals, constraints, and daily operations matter just as much as the feature list."
+          imageSrc={siteImages.industries.cta}
           imageAlt="Enterprise operations and planning environment"
           stageVariant="industries"
           points={[
-            "Align the solution with stakeholder reality",
-            "Reduce operational and approval friction",
-            "Design around how the business actually runs",
+            "Match the solution to stakeholder reality",
+            "Reduce approval and operational friction",
+            "Design around day-to-day work, not theory",
           ]}
         />
       </SectionShell>

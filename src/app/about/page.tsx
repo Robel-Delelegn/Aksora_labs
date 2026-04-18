@@ -8,6 +8,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { buildMetadata } from "@/lib/metadata";
+import { siteImages } from "@/lib/site-images";
 import {
   aboutPrinciples,
   disciplineAreas,
@@ -19,7 +20,7 @@ import {
 export const metadata = buildMetadata({
   title: "About | Aksora Labs",
   description:
-    "Learn how Aksora Labs approaches premium software design, engineering, communication, and long-term product partnership.",
+    "Learn how Aksora Labs approaches planning, design, engineering, communication, and long-term product work.",
   path: "/about",
 });
 
@@ -28,38 +29,38 @@ const heroBadges = ["Strategy", "Design", "Engineering", "Partnership"];
 const disciplineDetails = [
   {
     title: disciplineAreas[0],
-    description: "Scope, priorities, and decision framing before delivery momentum outruns the business need.",
-    imageSrc: "/images/process-artifacts-editorial-v1.png",
+    description: "Scope, priorities, and decision-making before momentum outruns the actual business need.",
+    imageSrc: siteImages.about.disciplines.strategy,
     imageAlt: "Product strategy and planning workspace",
   },
   {
     title: disciplineAreas[1],
-    description: "Interface systems shaped to feel clearer, calmer, and more trustworthy from the first screen.",
-    imageSrc: "/images/strategy-wall-editorial-v1.png",
+    description: "Interface systems shaped so the product feels easier to follow from the first screen.",
+    imageSrc: siteImages.about.disciplines.designSystems,
     imageAlt: "Design system and interface planning wall",
   },
   {
     title: disciplineAreas[2],
-    description: "Frontend implementation that respects accessibility, performance, and long-term maintainability.",
-    imageSrc: "/images/service-website-editorial-v1.png",
+    description: "Frontend work that takes accessibility, performance, and maintainability seriously.",
+    imageSrc: siteImages.about.disciplines.frontend,
     imageAlt: "Frontend design and website presentation environment",
   },
   {
     title: disciplineAreas[3],
-    description: "Backend systems and integrations designed so product logic stays reliable as scope grows.",
-    imageSrc: "/images/operations-control-editorial-v1.png",
+    description: "Backend systems and integrations designed to stay dependable as the product gets bigger.",
+    imageSrc: siteImages.about.disciplines.backend,
     imageAlt: "Backend and operations control environment",
   },
   {
     title: disciplineAreas[4],
-    description: "Mobile delivery for customer journeys, staff workflows, and operational use in the real world.",
-    imageSrc: "/images/service-mobile-editorial-v1.png",
+    description: "Mobile work for customer journeys, staff workflows, and field use where conditions are not always ideal.",
+    imageSrc: siteImages.about.disciplines.mobile,
     imageAlt: "Mobile product review with phone and tablet",
   },
   {
     title: disciplineAreas[5],
-    description: "QA, launch planning, and post-launch support built into the operating model, not bolted on later.",
-    imageSrc: "/images/editorial-banner-studio-v1.png",
+    description: "QA, launch planning, and support treated as part of the job, not something tacked on at the end.",
+    imageSrc: siteImages.about.disciplines.launch,
     imageAlt: "Premium studio environment with launch and delivery context",
   },
 ];
@@ -68,9 +69,9 @@ const partnershipCards: EditorialCarouselItem[] = [
   {
     id: "communication",
     eyebrow: "Communication",
-    title: "Clear communication under pressure.",
-    description: "Regular updates, visible decisions, and enough structure to keep momentum high without creating noise.",
-    imageSrc: "/images/strategy-wall-editorial-v1.png",
+    title: "Clear communication when things get busy.",
+    description: "Regular updates, visible decisions, and enough structure to keep the project moving without filling the calendar with noise.",
+    imageSrc: siteImages.about.partnership.communication,
     imageAlt: "Strategy wall with product thinking artifacts",
     href: "/contact",
     linkLabel: "Discuss your project",
@@ -79,9 +80,9 @@ const partnershipCards: EditorialCarouselItem[] = [
   {
     id: "pressure",
     eyebrow: "Judgment",
-    title: "Useful pressure before expensive mistakes.",
-    description: "Weak assumptions are surfaced early so the team can change course while the cost of change is still low.",
-    imageSrc: "/images/process-artifacts-editorial-v1.png",
+    title: "Pushback before mistakes get expensive.",
+    description: "Weak assumptions get challenged early, while the cost of changing course is still low.",
+    imageSrc: siteImages.about.partnership.judgment,
     imageAlt: "Editorial product process artifacts on a desk",
     href: "/contact",
     linkLabel: "Discuss your project",
@@ -90,10 +91,10 @@ const partnershipCards: EditorialCarouselItem[] = [
   {
     id: "craft",
     eyebrow: "Craft",
-    title: "Work that holds up after launch.",
-    description: "The product should feel strong in front of buyers now and remain readable to future teams later.",
-    imageSrc: "/images/hero-studio-editorial-v1.png",
-    imageAlt: "Design studio environment showing premium interface work",
+    title: "Work that still makes sense later.",
+    description: "The product should work for users now and still be readable to the next team that touches it.",
+    imageSrc: siteImages.about.partnership.craft,
+    imageAlt: "Design studio environment showing interface work",
     href: "/contact",
     linkLabel: "Discuss your project",
     meta: "Launch · handover · growth",
@@ -119,14 +120,14 @@ export default function AboutPage() {
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="About"
-          title="A premium product and engineering partner built around clarity, taste, and durable execution."
-          description="Aksora Labs exists for teams that want digital work to look sharper, feel stronger, and hold up after launch."
+          title="A small team built around clear thinking and solid execution."
+          description="Aksora Labs exists for teams that want the work to be well designed, well built, and easy to keep running."
           badges={heroBadges}
           tone="dark"
           stageVariant="services"
-          mediaSrc="/images/editorial-banner-studio-v1.png"
+          mediaSrc={siteImages.about.hero}
           mediaAlt="Premium software studio environment"
-          mediaNote="Senior attention, clear decisions, and a standard that stays visible in the work."
+          mediaNote="The people making the calls stay close to the work."
           mediaPosition="object-center"
         />
       </SectionShell>
@@ -136,7 +137,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Principles"
             title="The standard behind the work."
-            description="How Aksora Labs thinks about delivery, communication, and long-term partnership."
+            description="How we think about delivery, communication, and the work after launch."
             tone="light"
           />
         </div>
@@ -165,8 +166,8 @@ export default function AboutPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Coverage"
-            title="What the company is built to cover."
-            description="Strategy, interface systems, engineering depth, and the operational details that keep delivery coherent."
+            title="What the team is set up to cover."
+            description="Planning, design, engineering, and the practical details needed to ship well."
             tone="light"
           />
         </div>
@@ -185,8 +186,8 @@ export default function AboutPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Operating Model"
-            title="What teams value in the partnership."
-            description="The delivery model is remote-first, senior-led, and designed to keep decisions visible."
+            title="What clients usually value."
+            description="Remote-first, senior-led, and structured so decisions do not disappear into handoffs."
             tone="light"
           />
         </div>
@@ -213,12 +214,12 @@ export default function AboutPage() {
               Operating Note
             </p>
             <h2 className="relative mt-5 font-[family:var(--font-heading)] text-[2.35rem] font-normal leading-[0.98] text-white">
-              Remote-first, serving teams internationally.
+              Remote team, international client work.
             </h2>
             <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
-              The work is structured so strategy, design, engineering, QA, and
-              post-launch support stay connected instead of becoming separate
-              handoffs.
+              The work is set up so planning, design, engineering, QA, and
+              support stay connected instead of turning into a chain of
+              separate handoffs.
             </p>
             <div className="relative mt-8 border-t border-white/10 pt-6">
               <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/42 uppercase">
@@ -249,8 +250,8 @@ export default function AboutPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Partnership Standard"
-            title="What working together should feel like."
-            description="Good partnership is visible in the rhythm, the decisions, and how the work holds up over time."
+            title="What a good working relationship should feel like."
+            description="You should know what is happening, why decisions are being made, and what comes next."
             tone="light"
           />
         </div>
@@ -270,7 +271,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="FAQ"
             title="Questions teams often ask early."
-            description="Clear answers on fit, risk, and how the partnership works."
+            description="Straight answers on fit, risk, and how the work is run."
             tone="light"
           />
           <FaqList items={homeFaqs} tone="dark" />
@@ -280,15 +281,15 @@ export default function AboutPage() {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Next Step"
-          title="Start with the business problem and the operating context."
-          description="The strongest engagements start with clear business context, then shape scope, design, and engineering around that reality."
-          imageSrc="/images/editorial-banner-studio-v1.png"
+          title="Start with the problem and the reality around it."
+          description="The better the context, the better the plan for scope, design, and engineering."
+          imageSrc={siteImages.about.cta}
           imageAlt="Premium studio workspace"
           stageVariant="services"
           points={[
-            "Senior product, design, and engineering attention",
-            "A clearer delivery model from the first phase",
-            "Software built to stay strong after launch",
+            "Senior attention on the key decisions",
+            "A delivery model that stays understandable",
+            "Software that can handle the next phase too",
           ]}
         />
       </SectionShell>

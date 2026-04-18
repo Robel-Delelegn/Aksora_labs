@@ -8,12 +8,13 @@ import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { buildMetadata } from "@/lib/metadata";
+import { siteImages } from "@/lib/site-images";
 import { engagementModels, services, servicesFaqs } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Services | Aksora Labs",
   description:
-    "Custom websites, web apps, mobile apps, product strategy, UI/UX, internal systems, and premium engineering from Aksora Labs.",
+    "Websites, web apps, mobile apps, product design, internal tools, and support from Aksora Labs.",
   path: "/services",
 });
 
@@ -26,8 +27,8 @@ export default function ServicesPage() {
       id: coreServices[0].title,
       eyebrow: "Custom websites",
       title: coreServices[0].title,
-      description: "Flagship sites that strengthen trust before the first call happens.",
-      imageSrc: "/images/service-website-editorial-v1.png",
+      description: "Company sites that explain what you do and make the right first impression.",
+      imageSrc: siteImages.services.core.websites,
       imageAlt: "Website design presentation on a monitor",
       href: "/contact",
       linkLabel: "Discuss this service",
@@ -37,8 +38,8 @@ export default function ServicesPage() {
       id: coreServices[1].title,
       eyebrow: "Web products",
       title: coreServices[1].title,
-      description: "Browser products for operations, dashboards, portals, and structured workflows.",
-      imageSrc: "/images/service-webapp-editorial-v1.png",
+      description: "Web products for operations, dashboards, portals, and workflow-heavy teams.",
+      imageSrc: siteImages.services.core.webapps,
       imageAlt: "Web application dashboard workspace",
       href: "/contact",
       linkLabel: "Discuss this service",
@@ -48,8 +49,8 @@ export default function ServicesPage() {
       id: coreServices[2].title,
       eyebrow: "Mobile apps",
       title: coreServices[2].title,
-      description: "Mobile products designed for real users, real environments, and long-term maintainability.",
-      imageSrc: "/images/service-mobile-editorial-v1.png",
+      description: "Mobile apps built for real users, real environments, and day-to-day use.",
+      imageSrc: siteImages.services.core.mobile,
       imageAlt: "Mobile product review with phone and tablet",
       href: "/contact",
       linkLabel: "Discuss this service",
@@ -59,8 +60,8 @@ export default function ServicesPage() {
       id: coreServices[3].title,
       eyebrow: "Interface systems",
       title: coreServices[3].title,
-      description: "UI systems and product flows that make software feel clearer and more credible.",
-      imageSrc: "/images/strategy-wall-editorial-v1.png",
+      description: "Product flows and interface systems that help people get through the work without guessing.",
+      imageSrc: siteImages.services.core.uiux,
       imageAlt: "Interface and design system workspace",
       href: "/contact",
       linkLabel: "Discuss this service",
@@ -70,8 +71,8 @@ export default function ServicesPage() {
       id: coreServices[4].title,
       eyebrow: "Product direction",
       title: coreServices[4].title,
-      description: "Sharper scoping and prioritization before a team commits to the wrong build.",
-      imageSrc: "/images/process-artifacts-editorial-v1.png",
+      description: "Useful scoping and prioritization before a team spends money building the wrong thing.",
+      imageSrc: siteImages.services.core.productStrategy,
       imageAlt: "Product strategy and planning workspace",
       href: "/contact",
       linkLabel: "Discuss this service",
@@ -81,8 +82,8 @@ export default function ServicesPage() {
       id: coreServices[5].title,
       eyebrow: "Internal systems",
       title: coreServices[5].title,
-      description: "Operational software that removes manual work and improves decision visibility.",
-      imageSrc: "/images/service-systems-editorial-v1.png",
+      description: "Internal software that cuts manual work and gives teams a clearer view of what is happening.",
+      imageSrc: siteImages.services.core.internalSystems,
       imageAlt: "Enterprise workflow and systems environment",
       href: "/contact",
       linkLabel: "Discuss this service",
@@ -95,8 +96,8 @@ export default function ServicesPage() {
       id: supportingServices[0].title,
       eyebrow: "Support",
       title: supportingServices[0].title,
-      description: "Post-launch care that keeps the product stable and moving.",
-      imageSrc: "/images/editorial-banner-studio-v1.png",
+      description: "Support after launch to keep the product stable and moving in the right direction.",
+      imageSrc: siteImages.services.support.maintenance,
       imageAlt: "Studio workspace details",
       href: "/contact",
       linkLabel: "Discuss support",
@@ -105,8 +106,8 @@ export default function ServicesPage() {
       id: supportingServices[1].title,
       eyebrow: "Optimization",
       title: supportingServices[1].title,
-      description: "Speed, UX, and conversion improvements that make the product work harder.",
-      imageSrc: "/images/hero-studio-editorial-v1.png",
+      description: "Speed and UX improvements when the product feels slower or rougher than it should.",
+      imageSrc: siteImages.services.support.optimization,
       imageAlt: "Premium studio workspace",
       href: "/contact",
       linkLabel: "Discuss optimization",
@@ -115,8 +116,8 @@ export default function ServicesPage() {
       id: supportingServices[2].title,
       eyebrow: "Backend",
       title: supportingServices[2].title,
-      description: "Reliable APIs and application logic built to scale with the product.",
-      imageSrc: "/images/operations-control-editorial-v1.png",
+      description: "APIs and backend logic built to stay dependable as the product grows.",
+      imageSrc: siteImages.services.support.backend,
       imageAlt: "Backend and systems environment",
       href: "/contact",
       linkLabel: "Discuss backend",
@@ -125,8 +126,8 @@ export default function ServicesPage() {
       id: supportingServices[3].title,
       eyebrow: "Commerce",
       title: supportingServices[3].title,
-      description: "Booking and revenue flows where clarity and trust affect conversion directly.",
-      imageSrc: "/images/service-website-editorial-v1.png",
+      description: "Booking and checkout flows where confusion turns into lost revenue.",
+      imageSrc: siteImages.services.support.commerce,
       imageAlt: "Commerce and booking product environment",
       href: "/contact",
       linkLabel: "Discuss commerce",
@@ -138,14 +139,14 @@ export default function ServicesPage() {
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Services"
-          title="Capabilities built to move serious digital work forward."
-          description="Aksora Labs designs, builds, modernizes, and extends websites, products, and internal systems."
+          title="What we can help you build, fix, or improve."
+          description="From websites to internal tools, we cover the planning, design, and engineering needed to get useful work out the door."
           badges={["Web", "Product", "Mobile", "Systems", "Support"]}
           tone="dark"
           stageVariant="services"
-          mediaSrc="/images/strategy-wall-editorial-v1.png"
+          mediaSrc={siteImages.services.hero}
           mediaAlt="Strategy workspace with pinned wireframes and interface artifacts"
-          mediaNote="Strategy, design, and engineering working as one practice."
+          mediaNote="Planning, design, and engineering kept in the same loop."
           mediaPosition="object-center"
         />
       </SectionShell>
@@ -154,8 +155,8 @@ export default function ServicesPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Core Services"
-            title="The work clients most often bring in."
-            description="The essential capabilities most teams come looking for first."
+            title="Where most projects start."
+            description="The work teams usually come to us for first."
             tone="light"
           />
         </div>
@@ -174,7 +175,7 @@ export default function ServicesPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Supporting Capabilities"
-            title="Additional coverage that keeps delivery complete."
+            title="The rest of the work that keeps delivery complete."
             tone="light"
           />
         </div>
@@ -193,8 +194,8 @@ export default function ServicesPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Engagement Model"
-            title="Launch, modernize, or extend."
-            description="The shape of the engagement should follow the business need."
+            title="Start fresh, fix what exists, or keep building."
+            description="The shape of the work should match the actual problem."
             tone="light"
           />
         </div>
@@ -223,8 +224,8 @@ export default function ServicesPage() {
         <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
           <SectionHeading
             eyebrow="FAQ"
-            title="Service questions, answered clearly."
-            description="Enough detail to remove friction. No filler."
+            title="Service questions, answered plainly."
+            description="Enough detail to understand how we work."
             tone="light"
           />
           <FaqList items={servicesFaqs} tone="dark" />
@@ -234,15 +235,15 @@ export default function ServicesPage() {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Next Step"
-          title="Start with the business need. Shape the delivery around that."
-          description="Start with the business need, then shape the right scope, team, and delivery path."
-          imageSrc="/images/strategy-wall-editorial-v1.png"
+          title="Start with the problem. We can work out the right shape from there."
+          description="The first step is understanding what needs to change and what kind of help actually makes sense."
+          imageSrc={siteImages.services.cta}
           imageAlt="Premium strategy workspace"
           stageVariant="services"
           points={[
-            "Choose the right scope before cost expands",
-            "Keep design and engineering aligned",
-            "Build with one accountable partner",
+            "Choose the right scope before costs climb",
+            "Keep design and engineering connected",
+            "Work with one accountable team",
           ]}
         />
       </SectionShell>

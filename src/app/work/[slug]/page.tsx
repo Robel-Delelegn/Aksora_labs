@@ -10,6 +10,7 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { StructuredData } from "@/components/site/structured-data";
 import { buildMetadata } from "@/lib/metadata";
+import { getCaseStudyImage } from "@/lib/site-images";
 import { caseStudies, siteConfig } from "@/lib/site-data";
 
 type CaseStudyPageProps = {
@@ -67,14 +68,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
   const relatedStudies = caseStudies.filter((item) => item.slug !== slug);
   const stageVariant = getStageVariant(caseStudy.industry);
-  const imageSrc =
-    caseStudy.industry === "Finance"
-      ? "/images/operations-control-editorial-v1.png"
-      : caseStudy.industry === "Healthcare"
-        ? "/images/hero-studio-editorial-v1.png"
-        : caseStudy.industry === "Operations"
-          ? "/images/process-artifacts-editorial-v1.png"
-          : "/images/editorial-banner-studio-v1.png";
+  const imageSrc = getCaseStudyImage(caseStudy.slug);
 
   return (
     <div className="site-dark-page">
@@ -149,8 +143,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Problem and Response"
-            title="The challenge and the product answer."
-            description="The work is presented through business context first, then the response built around it."
+            title="The problem and the response."
+            description="Start with what was going wrong, then look at what was built to fix it."
             tone="light"
           />
         </div>
@@ -161,7 +155,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               Problem
             </p>
             <h2 className="relative mt-5 font-[family:var(--font-heading)] text-[2.05rem] font-normal leading-[0.98] text-white">
-              What needed to change
+              What was not working
             </h2>
             <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
               {caseStudy.problem}
@@ -173,7 +167,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               Solution
             </p>
             <h2 className="relative mt-5 font-[family:var(--font-heading)] text-[2.05rem] font-normal leading-[0.98] text-white">
-              What Aksora Labs built
+              What we built
             </h2>
             <p className="relative mt-4 text-[0.98rem] leading-8 text-white/66">
               {caseStudy.solution}
@@ -186,8 +180,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Scope and Outcome"
-            title="What was delivered and what changed."
-            description="Delivery scope, technical coverage, and practical business effect in one view."
+            title="What we built and what changed."
+            description="Features, technical coverage, and practical outcomes in one place."
             tone="light"
           />
         </div>
@@ -247,8 +241,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Related Work"
-            title="More case study structures."
-            description="Additional examples across website, product, and internal systems work."
+            title="More work in a similar vein."
+            description="Other examples across websites, products, and internal tools."
             tone="light"
           />
         </div>
@@ -263,15 +257,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Next Conversation"
-          title="Look at the product, the decisions, and the result together."
-          description="The work is presented so business context, product choices, and delivery quality are easy to understand."
+          title="Look at the problem, the choices, and the result together."
+          description="The useful part is not just what shipped. It is why it was shaped that way."
           imageSrc={imageSrc}
           imageAlt={caseStudy.title}
           stageVariant={stageVariant}
           points={[
             "Business context connected to product choices",
-            "Final execution backed by clear reasoning",
-            "A standard you can compare against your project",
+            "Execution backed by clear reasoning",
+            "A useful comparison point for your own project",
           ]}
         />
       </SectionShell>

@@ -16,8 +16,8 @@ export function Footer() {
           <div>
             <Logo inverse />
             <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-white/72">
-              Premium websites, products, and internal systems for companies
-              that want stronger digital credibility and sharper execution.
+              Websites, products, and internal tools for teams that need
+              clearer thinking and better execution.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {footerCredibility.map((item) => (
@@ -52,34 +52,32 @@ export function Footer() {
             </p>
             <div className="mt-5 space-y-4 text-[0.98rem] text-white/72">
               <p>{siteConfig.location}</p>
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="motion-link-inline block font-semibold text-white transition hover:text-[#f6d6db]"
-              >
-                {siteConfig.email}
-              </a>
-              <p>{siteConfig.responseWindow}</p>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {siteConfig.socialLinks.map((link) => (
+              <div>
                 <a
-                  key={link.label}
-                  href={link.href}
-                  className="motion-link-inline text-sm font-semibold text-white/72 underline underline-offset-4 transition hover:text-white"
-                  title={link.note}
+                  href={`mailto:${siteConfig.email}`}
+                  className="motion-link-inline font-semibold text-white transition hover:text-[#f6d6db]"
                 >
-                  {link.label}
+                  {siteConfig.email}
                 </a>
-              ))}
+              </div>
+              <div>
+                <a
+                  href={`tel:${siteConfig.phoneNumber}`}
+                  className="motion-link-inline font-semibold text-white transition hover:text-[#f6d6db]"
+                >
+                  {siteConfig.phoneNumber}
+                </a>
+              </div>
+              <p>{siteConfig.responseWindow}</p>
             </div>
           </div>
         </div>
         <div className="mt-12 border-t border-white/10 pt-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <p className="max-w-3xl text-xs leading-6 text-white/54">
-              Aksora Labs partners with startups, SMEs, and enterprise teams on
-              digital products that need better trust signals and better
-              execution.
+              Aksora Labs works with startups, smaller companies, and larger
+              teams on digital work that needs to be useful, readable, and well
+              built.
             </p>
             <div className="flex flex-wrap gap-2">
               {trustSignals.slice(0, 4).map((item) => (

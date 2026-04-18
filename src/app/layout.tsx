@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
@@ -6,6 +7,20 @@ import { StructuredData } from "@/components/site/structured-data";
 import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 import { siteConfig } from "@/lib/site-data";
 import "./globals.css";
+
+const bodyFont = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-body-family",
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
+const headingFont = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-heading-family",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -20,7 +35,7 @@ export const metadata: Metadata = {
     "mobile app development",
     "product design",
     "web app development",
-    "premium software studio",
+    "software design partner",
   ],
   icons: {
     icon: "/icon.svg",
@@ -56,7 +71,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html
+      lang="en"
+      className={`${bodyFont.variable} ${headingFont.variable} h-full antialiased`}
+    >
       <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
         <StructuredData
           data={[
@@ -66,6 +84,7 @@ export default function RootLayout({
               name: siteConfig.name,
               url: siteConfig.url,
               email: siteConfig.email,
+              telephone: siteConfig.phoneNumber,
               description: siteConfig.description,
             },
             {

@@ -13,37 +13,39 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { StructuredData } from "@/components/site/structured-data";
 import { buildMetadata } from "@/lib/metadata";
+import { siteImages } from "@/lib/site-images";
 import {
   caseStudies,
-  clientLogoPlaceholders,
   featuredServiceIndexes,
   homeFaqs,
   homeHero,
   processSteps,
+  sectorStripItems,
   services,
   siteConfig,
 } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: siteConfig.title,
-  description: siteConfig.description,
+  description:
+    "Aksora Labs plans, designs, and builds websites, apps, and internal tools with clear scope and solid execution.",
   path: "/",
 });
 
 const trustPillars = [
   {
     title: "Senior-led",
-    body: "Important product, design, and engineering decisions stay close to the actual work.",
+    body: "The people making product and engineering calls stay close to the work itself.",
     icon: Compass,
   },
   {
-    title: "Visible progress",
-    body: "Scope, risk, and next steps remain visible throughout delivery.",
+    title: "Clear progress",
+    body: "You can see what is moving, what is blocked, and what comes next.",
     icon: Workflow,
   },
   {
     title: "Built to last",
-    body: "The product is shaped to look strong now and remain maintainable after launch.",
+    body: "We build for launch and for the months after launch, not just the handoff day.",
     icon: ShieldCheck,
   },
 ];
@@ -55,12 +57,12 @@ export default function HomePage() {
   const heroSlides = [
     {
       id: "websites",
-      label: "Flagship websites",
-      title: "Websites built for stronger first impressions and clearer positioning.",
+      label: "Websites",
+      title: "Websites that explain the business and leave a better first impression.",
       description:
-        "Premium websites for companies that need sharper presentation, better structure, and higher-conviction digital credibility.",
-      imageSrc: "/images/home-hero-cinematic-02-v1.png",
-      imageAlt: "Cinematic premium website and product design review environment",
+        "For companies whose site feels vague, outdated, or not useful enough in sales conversations.",
+      imageSrc: siteImages.home.hero.websites,
+      imageAlt: "Website and product design review environment",
       highlights: [
         "Messaging architecture",
         "Editorial page systems",
@@ -70,10 +72,10 @@ export default function HomePage() {
     {
       id: "products",
       label: "Web products",
-      title: "Web products that stay clear as workflows, roles, and data grow.",
+      title: "Web products that stay understandable as roles, rules, and data pile up.",
       description:
-        "Browser-based platforms for dashboards, portals, and business software where clarity matters as much as code quality.",
-      imageSrc: "/images/home-hero-cinematic-01-v1.png",
+        "For dashboards, portals, and workflow-heavy products where people need clarity every day.",
+      imageSrc: siteImages.home.hero.webapps,
       imageAlt: "Cinematic software strategy environment with product dashboards",
       highlights: [
         "Product UX",
@@ -84,10 +86,10 @@ export default function HomePage() {
     {
       id: "systems",
       label: "Internal systems",
-      title: "Internal systems that improve visibility, reporting, and operational control.",
+      title: "Internal tools that make the work easier to run.",
       description:
-        "Operational platforms for admin, reporting, and internal workflows that need less manual work and better visibility.",
-      imageSrc: "/images/home-hero-cinematic-03-v1.png",
+        "For teams stuck in manual updates, scattered information, and reporting no one fully trusts.",
+      imageSrc: siteImages.home.hero.systems,
       imageAlt: "Cinematic internal systems and operations control environment",
       highlights: [
         "Workflow mapping",
@@ -101,45 +103,45 @@ export default function HomePage() {
     {
       id: "websites",
       eyebrow: "Custom websites",
-      title: "Credible websites for ambitious businesses.",
+      title: "Sites that make the business easier to understand.",
       service: featuredServices[0],
-      imageSrc: "/images/service-website-editorial-v1.png",
+      imageSrc: siteImages.home.capabilities.websites,
       imageAlt: "Premium website presentation on a desktop monitor",
-      note: "Sharper positioning and a stronger first impression.",
-      signal: "Credibility and conversion",
+      note: "Useful when the current site looks fine on the surface but is not helping trust or sales.",
+      signal: "Clear story",
       href: "/services",
     },
     {
       id: "products",
       eyebrow: "Web applications",
-      title: "Operational web apps that stay clear under complexity.",
+      title: "Web apps people can actually work in.",
       service: featuredServices[1],
-      imageSrc: "/images/service-webapp-editorial-v1.png",
+      imageSrc: siteImages.home.capabilities.webapps,
       imageAlt: "Web application dashboard review environment",
-      note: "Interfaces built for workflows, roles, and data that keep growing.",
-      signal: "Clarity and control",
+      note: "For growing workflows, messy permissions, and data that needs structure.",
+      signal: "Less friction",
       href: "/services",
     },
     {
       id: "mobile",
       eyebrow: "Mobile products",
-      title: "Mobile products that feel fast and intentional.",
+      title: "Mobile apps that feel clear in the hand.",
       service: featuredServices[2],
-      imageSrc: "/images/service-mobile-editorial-v1.png",
-      imageAlt: "Mobile app review on premium devices",
-      note: "Focused product UX for customers, staff, and field teams.",
-      signal: "Speed and usability",
+      imageSrc: siteImages.home.capabilities.mobile,
+      imageAlt: "Mobile app review on phones and tablets",
+      note: "Built for customers, staff, and field teams who need to move quickly.",
+      signal: "Fewer steps",
       href: "/services",
     },
     {
       id: "systems",
       eyebrow: "Internal systems",
-      title: "Internal systems with cleaner reporting and control.",
+      title: "Internal tools people stop fighting with.",
       service: featuredServices[3],
-      imageSrc: "/images/service-systems-editorial-v1.png",
+      imageSrc: siteImages.home.capabilities.systems,
       imageAlt: "Enterprise workflow and systems environment",
-      note: "Operational software that reduces manual work and improves visibility.",
-      signal: "Reporting and oversight",
+      note: "Useful when the team is buried in spreadsheets, follow-ups, and disconnected reporting.",
+      signal: "Better visibility",
       href: "/services",
     },
   ];
@@ -147,22 +149,22 @@ export default function HomePage() {
   const processCards = [
     {
       step: processPreview[0],
-      imageSrc: "/images/strategy-wall-editorial-v1.png",
+      imageSrc: siteImages.home.process.discovery,
       imageAlt: processPreview[0].title,
     },
     {
       step: processPreview[1],
-      imageSrc: "/images/process-artifacts-editorial-v1.png",
+      imageSrc: siteImages.home.process.shaping,
       imageAlt: processPreview[1].title,
     },
     {
       step: processPreview[2],
-      imageSrc: "/images/service-website-editorial-v1.png",
+      imageSrc: siteImages.home.process.design,
       imageAlt: processPreview[2].title,
     },
     {
       step: processPreview[3],
-      imageSrc: "/images/operations-control-editorial-v1.png",
+      imageSrc: siteImages.home.process.build,
       imageAlt: processPreview[3].title,
     },
   ];
@@ -171,24 +173,24 @@ export default function HomePage() {
     {
       study: caseStudies[0],
       title: "Investor reporting portal",
-      summary: "Secure reporting portal for a regional private capital firm.",
-      imageSrc: "/images/operations-control-editorial-v1.png",
+      summary: "Secure reporting hub for a regional private capital firm.",
+      imageSrc: siteImages.home.work.investorReporting,
       imageAlt: "Investor reporting portal environment",
       highlight: "4x faster reporting cadence",
     },
     {
       study: caseStudies[1],
       title: "Patient booking and care coordination",
-      summary: "Unified booking and scheduling for a multi-site healthcare group.",
-      imageSrc: "/images/hero-studio-editorial-v1.png",
+      summary: "Simpler booking and scheduling for a multi-site healthcare group.",
+      imageSrc: siteImages.home.work.patientBooking,
       imageAlt: "Patient booking platform environment",
       highlight: "Simplified patient journey",
     },
     {
       study: caseStudies[2],
       title: "Field operations suite",
-      summary: "Dispatch, mobile workflows, and reporting for a logistics business.",
-      imageSrc: "/images/service-systems-editorial-v1.png",
+      summary: "Dispatch, mobile workflows, and reporting in one system.",
+      imageSrc: siteImages.home.work.fieldOperations,
       imageAlt: "Field operations suite environment",
       highlight: "Real-time dispatch visibility",
     },
@@ -206,6 +208,8 @@ export default function HomePage() {
             "@type": "ProfessionalService",
             name: siteConfig.name,
             url: siteConfig.url,
+            email: siteConfig.email,
+            telephone: siteConfig.phoneNumber,
             description: siteConfig.description,
             serviceType: services.map((service) => service.title),
             areaServed: "Worldwide",
@@ -230,21 +234,21 @@ export default function HomePage() {
         secondaryCta={homeHero.secondaryCta}
         proofPoints={homeHero.proofPoints}
         slides={heroSlides}
-        logos={clientLogoPlaceholders}
+        marqueeItems={sectorStripItems}
       />
 
-      <SectionShell className="home-dark-section home-dark-section--plain py-20 text-white sm:py-24">
+      <SectionShell className="home-dark-section home-dark-section--plain py-12 text-white sm:py-16 lg:py-24">
         <Reveal>
           <SectionHeading
             eyebrow="Capabilities"
-            title="Core capabilities across web, product, mobile, and systems."
-            description="Aksora Labs combines strategy, design, and engineering for digital work that carries real business weight."
+            title="What we build across web, product, mobile, and internal tools."
+            description="Strategy, design, and engineering stay in the same conversation from the start."
             align="center"
             tone="light"
           />
         </Reveal>
 
-        <div className="mt-14">
+        <div className="mt-8 sm:mt-10 lg:mt-14">
           <HomeCapabilityShowcase
             items={capabilityItems.map((item) => ({
               id: item.id,
@@ -262,22 +266,21 @@ export default function HomePage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="home-dark-section home-dark-section--top py-20 text-white sm:py-24">
-        <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+      <SectionShell className="home-dark-section home-dark-section--top py-12 text-white sm:py-16 lg:py-24">
+        <div className="grid gap-7 sm:gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
           <Reveal>
-            <SectionHeading
-              eyebrow="Selected Work"
-              title="Selected work that shows range, judgment, and execution."
-              description="Each case study makes the business problem, product response, and outcome easy to understand."
-              tone="light"
-            />
+          <SectionHeading
+            eyebrow="Selected Work"
+            title="Work that makes the problem, the choices, and the result easy to follow."
+            description="Enough detail to see what changed and why it mattered."
+            tone="light"
+          />
           </Reveal>
           <Reveal variant="right" delay={100}>
             <div className="flex lg:justify-end">
               <ButtonLink
                 href="/work"
-                variant="secondary"
-                className="border-white/14 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
+                variant="inverse"
               >
                 View Our Work
               </ButtonLink>
@@ -285,7 +288,7 @@ export default function HomePage() {
           </Reveal>
         </div>
 
-        <div className="home-work-showcase mt-12">
+        <div className="home-work-showcase mt-8 sm:mt-10">
           <Reveal variant="up" delay={140}>
             <article className="home-work-feature group">
               <div className="home-work-feature__media">
@@ -335,8 +338,7 @@ export default function HomePage() {
                 <div className="mt-8">
                   <ButtonLink
                     href={`/work/${featuredWork.study.slug}`}
-                    variant="secondary"
-                    className="border-white/14 bg-white/6 text-white hover:border-white hover:bg-white hover:text-slate-950"
+                    variant="inverse"
                   >
                     View case study
                   </ButtonLink>
@@ -392,18 +394,18 @@ export default function HomePage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="home-dark-section home-dark-section--plain py-20 text-white sm:py-24">
+      <SectionShell className="home-dark-section home-dark-section--plain py-12 text-white sm:py-16 lg:py-24">
         <Reveal>
           <SectionHeading
             eyebrow="Process"
-            title="A delivery model designed to keep momentum visible."
-            description="A clear delivery process keeps decisions, progress, and next steps easy to track."
+            title="A process that keeps the work moving without hiding the messy bits."
+            description="You can see the decisions, the progress, and what happens next."
             align="center"
             tone="light"
           />
         </Reveal>
 
-        <div className="process-runway mt-14">
+        <div className="process-runway mt-8 sm:mt-10 lg:mt-14">
           <div className="process-runway__line" />
           {processCards.map((item, index) => (
             <Reveal key={item.step.title} delay={index * 80}>
@@ -447,17 +449,17 @@ export default function HomePage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="home-dark-section home-dark-section--right py-20 text-white sm:py-24">
-        <div className="grid gap-12 xl:grid-cols-[0.7fr_1.3fr] xl:items-start">
+      <SectionShell className="home-dark-section home-dark-section--right py-12 text-white sm:py-16 lg:py-24">
+        <div className="grid gap-7 sm:gap-9 xl:grid-cols-[0.7fr_1.3fr] xl:items-start">
           <Reveal>
             <SectionHeading
               eyebrow="Why Aksora"
-              title="How Aksora Labs earns trust."
-              description="Senior attention, visible progress, and durable systems shape every engagement."
+              title="What it is like to work with us."
+              description="Clear decisions, visible progress, and software that still makes sense after launch."
               tone="light"
             />
 
-            <div className="mt-10 border-t border-white/10">
+            <div className="mt-6 sm:mt-8 border-t border-white/10">
               {trustPillars.map((item, index) => {
                 const Icon = item.icon;
 
@@ -489,7 +491,7 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="FAQ"
                 title="Questions clients often ask early."
-                description="Clear answers reduce friction. They also signal maturity."
+                description="Straight answers before the first call save everyone time."
                 tone="light"
               />
               <div className="mt-8">
@@ -500,18 +502,18 @@ export default function HomePage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="home-dark-section home-dark-section--plain pb-8 pt-24">
+      <SectionShell className="home-dark-section home-dark-section--plain pb-8 pt-12 sm:pt-16 lg:pt-24">
         <CtaSection
           eyebrow="Next Step"
-          title="Bring the website, product, or system up to the level the business needs."
-          description="The first conversation clarifies the opportunity, the risk, and the right delivery path."
-          imageSrc="/images/home-hero-cinematic-01-v1.png"
+          title="If the current site, product, or workflow is not doing its job, let's look at it properly."
+          description="The first conversation is for getting clear on the problem, the constraints, and the best next step."
+          imageSrc={siteImages.home.cta}
           imageAlt="Premium software strategy environment"
           stageVariant="contact"
           points={[
-            "Clarify scope before cost expands",
-            "Align strategy, UX, and engineering from the start",
-            "Move with a partner that makes quality visible",
+            "Get clear on scope before spending more",
+            "Keep product, design, and engineering aligned",
+            "Leave with a sensible next step",
           ]}
         />
       </SectionShell>

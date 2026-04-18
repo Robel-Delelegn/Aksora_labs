@@ -29,7 +29,7 @@ type ImmersiveHomeHeroProps = {
   };
   proofPoints: string[];
   slides: HomeHeroSlide[];
-  logos: string[];
+  marqueeItems: string[];
 };
 
 export function ImmersiveHomeHero({
@@ -40,7 +40,7 @@ export function ImmersiveHomeHero({
   secondaryCta,
   proofPoints,
   slides,
-  logos,
+  marqueeItems,
 }: ImmersiveHomeHeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -61,7 +61,7 @@ export function ImmersiveHomeHero({
   }, [slides.length]);
 
   const activeSlide = useMemo(() => slides[activeIndex], [activeIndex, slides]);
-  const marqueeItems = [...logos, ...logos];
+  const repeatedMarqueeItems = [...marqueeItems, ...marqueeItems];
 
   return (
     <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#050608] text-white">
@@ -92,67 +92,70 @@ export function ImmersiveHomeHero({
         <div className="hero-speckle" />
       </div>
 
-      <div className="relative mx-auto flex min-h-[calc(100svh-7.6rem)] w-full max-w-[1760px] flex-col px-5 pb-10 pt-20 sm:px-6 sm:pb-14 lg:px-10 lg:pb-16 lg:pt-24">
-        <div className="mx-auto flex w-full max-w-[1080px] flex-1 flex-col items-center justify-center text-center">
-          <span className="inline-flex items-center rounded-full border border-white/12 bg-white/8 px-4 py-2 text-[0.74rem] font-semibold tracking-[0.2em] text-white/82 uppercase backdrop-blur-md">
+      <div className="relative mx-auto flex min-h-[calc(100svh-6.25rem)] w-full max-w-[1760px] flex-col px-4 pb-8 pt-14 sm:min-h-[calc(100svh-7.2rem)] sm:px-6 sm:pb-14 sm:pt-[4.5rem] lg:px-10 lg:pb-16 lg:pt-24">
+        <div className="mx-auto flex w-full max-w-[1040px] flex-1 flex-col items-center justify-center text-center">
+          <span className="inline-flex items-center rounded-full border border-white/12 bg-white/8 px-3.5 py-1.5 text-[0.66rem] font-semibold tracking-[0.2em] text-white/82 uppercase backdrop-blur-md sm:px-4 sm:py-2 sm:text-[0.74rem]">
             {eyebrow}
           </span>
-          <h1 className="mt-8 max-w-[1120px] text-balance font-[family:var(--font-body-bold)] text-[3.5rem] leading-[0.92] tracking-[-0.05em] text-white sm:text-[4.8rem] lg:text-[6.4rem]">
+          <h1 className="mt-6 max-w-[1120px] text-balance font-[family:var(--font-body)] text-[2.85rem] font-semibold leading-[0.95] tracking-[-0.05em] text-white sm:mt-8 sm:text-[4.4rem] lg:text-[6.4rem]">
             {title}
           </h1>
-          <p className="mt-6 max-w-3xl text-pretty text-[1.05rem] leading-8 text-white/70 sm:text-[1.12rem]">
+          <p className="mt-5 max-w-3xl text-pretty text-[0.98rem] leading-7 text-white/70 sm:mt-6 sm:text-[1.12rem] sm:leading-8">
             {description}
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 flex flex-wrap justify-center gap-2 sm:mt-8 sm:gap-3">
             {proofPoints.map((point) => (
               <span
                 key={point}
-                className="inline-flex items-center rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[0.72rem] font-semibold tracking-[0.16em] text-white/72 uppercase backdrop-blur-md"
+                className="inline-flex items-center rounded-full border border-white/12 bg-white/6 px-3.5 py-2 text-[0.66rem] font-semibold tracking-[0.16em] text-white/72 uppercase backdrop-blur-md sm:px-4 sm:text-[0.72rem]"
               >
                 {point}
               </span>
             ))}
           </div>
 
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
             <ButtonLink
               href={primaryCta.href}
-              className="border-[var(--accent)] bg-[var(--accent)] px-6 text-white hover:border-[#a72c3d] hover:bg-[#a72c3d]"
+              className="w-full px-6 sm:w-auto"
             >
               {primaryCta.label}
             </ButtonLink>
             <ButtonLink
               href={secondaryCta.href}
-              variant="secondary"
-              className="border-white/16 bg-white/8 px-6 text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-slate-950"
+              variant="inverse"
+              className="w-full px-6 backdrop-blur-md sm:w-auto"
             >
               {secondaryCta.label}
             </ButtonLink>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-end">
+        <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-end">
           <div className="overflow-hidden">
-            <div className="marquee-track flex min-w-max items-center gap-10 opacity-70 motion-reduce:animate-none lg:gap-14">
-              {marqueeItems.map((logo, index) => (
+            <p className="mb-3 text-[0.68rem] font-semibold tracking-[0.18em] text-white/36 uppercase">
+              Contexts we commonly support
+            </p>
+            <div className="marquee-track flex min-w-max items-center gap-8 opacity-70 motion-reduce:animate-none lg:gap-14">
+              {repeatedMarqueeItems.map((item, index) => (
                 <span
-                  key={`${logo}-${index}`}
-                  className="text-[0.82rem] font-semibold tracking-[0.18em] text-white/44 uppercase"
+                  key={`${item}-${index}`}
+                  className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/44 uppercase sm:text-[0.82rem]"
                 >
-                  {logo}
+                  {item}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-white/12 bg-white/8 p-5 backdrop-blur-xl">
+          <div className="rounded-[28px] border border-white/12 bg-white/8 p-4 backdrop-blur-xl sm:p-5">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-white/46 uppercase">
                   Featured Capability
                 </p>
-                <p className="mt-2 text-[1.35rem] font-semibold leading-tight text-white">
+                <p className="mt-2 text-[1.15rem] font-semibold leading-tight text-white sm:text-[1.35rem]">
                   {activeSlide.label}
                 </p>
               </div>
@@ -172,10 +175,10 @@ export function ImmersiveHomeHero({
                 ))}
               </div>
             </div>
-            <p className="mt-4 text-[0.98rem] leading-7 text-white/72">
+            <p className="mt-4 text-[0.94rem] leading-6 text-white/72 sm:text-[0.98rem] sm:leading-7">
               {activeSlide.title}
             </p>
-            <p className="mt-4 text-sm leading-6 text-white/56">
+            <p className="mt-4 text-[0.86rem] leading-6 text-white/56 sm:text-sm">
               {activeSlide.description}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">

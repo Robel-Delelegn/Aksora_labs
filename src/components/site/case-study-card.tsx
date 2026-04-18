@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { getCaseStudyImage } from "@/lib/site-images";
 import type { CaseStudy } from "@/lib/site-data";
 
 type CaseStudyCardProps = {
@@ -9,14 +10,7 @@ type CaseStudyCardProps = {
 };
 
 export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
-  const imageSrc =
-    caseStudy.industry === "Finance"
-      ? "/images/operations-control-editorial-v1.png"
-      : caseStudy.industry === "Healthcare"
-        ? "/images/hero-studio-editorial-v1.png"
-        : caseStudy.industry === "Operations"
-          ? "/images/service-systems-editorial-v1.png"
-          : "/images/editorial-banner-studio-v1.png";
+  const imageSrc = getCaseStudyImage(caseStudy.slug);
 
   return (
     <Link href={`/work/${caseStudy.slug}`} className="group block h-full">

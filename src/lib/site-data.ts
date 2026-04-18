@@ -1,33 +1,17 @@
 export const siteConfig = {
   name: "Aksora Labs",
   shortName: "Aksora",
-  title: "Aksora Labs | Premium Software Design and Engineering Partner",
+  title: "Aksora Labs | Websites, Apps, and Internal Tools",
   description:
-    "Aksora Labs designs and builds premium websites, web apps, mobile apps, and internal systems for startups, SMEs, and enterprise teams that need serious execution.",
-  url: "https://aksoralabs.com",
-  email: "hello@aksoralabs.com",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "971500000000",
+    "Aksora Labs helps teams plan, design, and build websites, apps, and internal tools that are easier to use, easier to run, and easier to maintain.",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://aksoralabs.com",
+  email: "samsonamanuelsima@gmail.com",
+  phoneNumber: "+251980405252",
+  whatsappNumber: "+251980405252",
   whatsappMessage:
-    "Hello Aksora Labs, I’d like to discuss a website or product project.",
-  responseWindow: "Clear first response and discovery planning",
-  location: "Remote-first, serving teams internationally",
-  socialLinks: [
-    {
-      label: "LinkedIn",
-      href: "#",
-      note: "",
-    },
-    {
-      label: "GitHub",
-      href: "#",
-      note: "",
-    },
-    {
-      label: "Dribbble",
-      href: "#",
-      note: "",
-    },
-  ],
+    "Hi Aksora Labs, I'd like to talk about a website or product project.",
+  responseWindow: "Usually replies within one business day",
+  location: "Remote team working with clients in different time zones",
 } as const;
 
 export type NavItem = {
@@ -46,7 +30,7 @@ export const mainNav: NavItem[] = [
 ];
 
 export const announcementBar = {
-  text: "Now booking web, product, and modernization engagements.",
+  text: "Open for new website, product, and modernization work.",
   ctaLabel: "Book a Call",
   ctaHref: "/contact",
 };
@@ -54,9 +38,9 @@ export const announcementBar = {
 export const homeHero = {
   eyebrow: "Aksora Labs",
   title:
-    "Websites, apps, and internal systems for businesses that expect a higher standard.",
+    "Websites, apps, and internal tools built with clear thinking.",
   description:
-    "Aksora Labs designs and engineers premium digital products for teams that need sharp presentation, reliable delivery, and software that holds up after launch.",
+    "We work with teams that need a site, product, or internal system to do its job well now and keep doing it after launch.",
   primaryCta: { label: "Book a Call", href: "/contact" },
   secondaryCta: { label: "View Our Work", href: "/work" },
   proofPoints: [
@@ -65,11 +49,11 @@ export const homeHero = {
     "Mobile products",
     "Internal systems",
   ],
-  calloutTitle: "What Aksora Labs takes on",
+  calloutTitle: "What we usually help with",
   calloutItems: [
-    "Flagship websites built for stronger digital credibility.",
-    "Products and platforms designed for clarity and reliability.",
-    "Internal systems that reduce drag and improve visibility.",
+    "Company websites that explain the business clearly.",
+    "Products and dashboards that stay usable as they grow.",
+    "Internal tools that cut busywork and give teams better visibility.",
   ],
 };
 
@@ -77,22 +61,22 @@ export const homeOverview = [
   {
     title: "Scope",
     description:
-      "Start with the business need, not a guessed feature list.",
+      "Start with the real problem, not a wish list.",
   },
   {
     title: "Design",
     description:
-      "Make trust and usability obvious in seconds.",
+      "Make the product easy to understand and easy to trust.",
   },
   {
     title: "Engineering",
     description:
-      "Ship fast without building something brittle.",
+      "Build cleanly so change does not get expensive later.",
   },
   {
     title: "Stewardship",
     description:
-      "Post-launch support, iteration, and maintenance.",
+      "Keep improving the work after launch.",
   },
 ];
 
@@ -101,23 +85,23 @@ export const trustSignals = [
   "Web applications",
   "Mobile products",
   "Internal systems",
-  "API and backend platforms",
-  "Long-term support",
+  "Backend and API work",
+  "Ongoing support",
 ];
 
-export const clientLogoPlaceholders = [
-  "Startups",
-  "SMEs",
-  "Enterprise teams",
+export const sectorStripItems = [
   "Finance",
   "Healthcare",
   "Operations",
   "Commerce",
   "SaaS",
-  "Internal systems",
+  "Professional services",
+  "Internal operations",
   "Web platforms",
   "Mobile products",
-  "Long-term partnerships",
+  "Booking flows",
+  "Admin systems",
+  "Workflow tooling",
 ];
 
 export type Service = {
@@ -130,57 +114,57 @@ export const services: Service[] = [
   {
     title: "Custom websites",
     description:
-      "Premium marketing and corporate websites built to strengthen credibility and convert qualified demand.",
+      "Marketing and company websites built to explain what you do, earn trust, and bring in the right leads.",
     deliverables: [
-      "Messaging architecture",
-      "Editorial page design",
-      "CMS-friendly component systems",
+      "Content structure",
+      "Page design system",
+      "Reusable CMS components",
     ],
   },
   {
     title: "Web application development",
     description:
-      "Browser-based products for dashboards, portals, and multi-role workflows.",
+      "Web apps for dashboards, portals, and day-to-day workflows that need to stay clear as they grow.",
     deliverables: [
       "Frontend architecture",
       "Role-based workflows",
-      "Production-ready delivery",
+      "Production-ready build",
     ],
   },
   {
     title: "Mobile app development",
     description:
-      "Mobile products for customers, field teams, and operational workflows.",
+      "Mobile apps for customers, staff, and field teams working in the real world.",
     deliverables: [
       "Cross-platform product design",
-      "Offline-aware flows",
+      "Offline-aware journeys",
       "Release planning",
     ],
   },
   {
     title: "UI/UX design",
     description:
-      "Interfaces and design systems that make software easier to trust and easier to use.",
+      "Interface design that helps people find their way quickly and use the product without friction.",
     deliverables: [
       "User flows",
       "Design systems",
-      "High-fidelity interface design",
+      "Detailed UI design",
     ],
   },
   {
     title: "Product strategy",
     description:
-      "Scoping and prioritization for teams that need sharper direction before building.",
+      "Useful when the problem is clear but the team needs help deciding what to build first.",
     deliverables: [
       "Feature prioritization",
       "MVP definition",
-      "Roadmap framing",
+      "Roadmap outline",
     ],
   },
   {
     title: "Internal tools and business systems",
     description:
-      "Operational platforms that reduce manual work and improve visibility.",
+      "Internal tools that remove repetitive work and help teams see what is going on.",
     deliverables: [
       "Workflow mapping",
       "Admin systems",
@@ -190,7 +174,7 @@ export const services: Service[] = [
   {
     title: "Maintenance and support",
     description:
-      "Post-launch improvement, stabilization, and feature expansion.",
+      "Support after launch for fixes, improvements, and the next round of work.",
     deliverables: [
       "Monitoring and fixes",
       "Enhancement backlog",
@@ -200,17 +184,17 @@ export const services: Service[] = [
   {
     title: "Performance optimization",
     description:
-      "Technical and UX improvements that reduce friction and improve speed.",
+      "Targeted speed and UX improvements when the product feels slower or harder to use than it should.",
     deliverables: [
       "Performance audits",
       "Frontend optimization",
-      "Conversion-focused polish",
+      "UX clean-up",
     ],
   },
   {
     title: "API and backend development",
     description:
-      "Backend systems and integrations that keep product logic reliable and scalable.",
+      "Backend services and integrations that keep the product dependable as usage and complexity grow.",
     deliverables: [
       "API design",
       "Integration architecture",
@@ -220,7 +204,7 @@ export const services: Service[] = [
   {
     title: "E-commerce and booking platforms",
     description:
-      "Commerce and scheduling experiences where trust, clarity, and speed affect revenue.",
+      "Booking and commerce flows where confusion costs sales and slow handoffs create extra work.",
     deliverables: [
       "Checkout and booking flows",
       "Back-office controls",
@@ -233,20 +217,20 @@ export const featuredServiceIndexes = [0, 1, 2, 5];
 
 export const whyAksora = [
   {
-    title: "Business and product alignment",
-    description: "Business context, UX quality, and engineering decisions stay connected.",
+    title: "The business problem stays in view",
+    description: "Product decisions, UX choices, and engineering tradeoffs stay tied to what the business actually needs.",
   },
   {
-    title: "Senior attention on the work",
-    description: "Important decisions stay close to strategy, design, and engineering.",
+    title: "Important decisions are not pushed down the chain",
+    description: "Strategy, design, and engineering decisions stay close to the people doing the work.",
   },
   {
-    title: "Design that signals competence",
-    description: "Presentation reinforces trust at first glance.",
+    title: "The work looks considered",
+    description: "The product should feel trustworthy without relying on marketing fluff.",
   },
   {
-    title: "Systems built for change",
-    description: "Architecture is shaped to survive growth, iteration, and handover.",
+    title: "The build can handle change",
+    description: "Architecture, content, and code should still make sense when the product grows or changes hands.",
   },
 ];
 
@@ -258,40 +242,40 @@ export type ProcessStep = {
 
 export const processSteps: ProcessStep[] = [
   {
-    title: "Diagnose the opportunity",
+    title: "Understand the problem",
     description:
-      "Start with business context, constraints, users, and risk.",
-    outputs: ["Scope clarity", "Risk flags", "Recommended delivery path"],
+      "Start with the business, the users, the constraints, and what can go wrong.",
+    outputs: ["Clear scope", "Known risks", "Recommended approach"],
   },
   {
-    title: "Shape the product",
+    title: "Shape the right version",
     description:
-      "Translate goals into priorities, flows, and technical direction.",
-    outputs: ["Feature priorities", "Experience architecture", "Technical approach"],
+      "Turn goals into priorities, user flows, and a sensible technical plan.",
+    outputs: ["Feature priorities", "User flow map", "Technical approach"],
   },
   {
-    title: "Design the system",
+    title: "Design the experience",
     description:
-      "Create the visual language and reusable patterns that make the product coherent.",
-    outputs: ["Wireframes", "High-fidelity UI", "Design system rules"],
+      "Design the screens, patterns, and visual rules so the product feels consistent from end to end.",
+    outputs: ["Wireframes", "Detailed UI", "Design rules"],
   },
   {
-    title: "Build with discipline",
+    title: "Build in steady steps",
     description:
-      "Engineer in focused cycles with visible progress and quality gates.",
-    outputs: ["Working increments", "Weekly reporting", "QA and review checkpoints"],
+      "Build in focused cycles with clear updates and regular review points.",
+    outputs: ["Working releases", "Weekly updates", "QA checkpoints"],
   },
   {
-    title: "Launch with confidence",
+    title: "Launch carefully",
     description:
-      "Prepare the release path, validate edge cases, and handoff cleanly.",
-    outputs: ["Launch checklist", "Documentation", "Monitoring-ready release"],
+      "Prepare the release, test the edge cases, and hand the product over cleanly.",
+    outputs: ["Launch checklist", "Documentation", "Monitoring setup"],
   },
   {
     title: "Support and extend",
     description:
-      "Improve the product with a deliberate roadmap, support plan, and next-phase priorities.",
-    outputs: ["Improvement backlog", "Support coverage", "Scalable next-phase planning"],
+      "Fix what needs fixing, improve what matters, and plan the next phase without guesswork.",
+    outputs: ["Improvement backlog", "Support plan", "Next-phase priorities"],
   },
 ];
 
@@ -300,7 +284,6 @@ export type CaseStudy = {
   badge: string;
   title: string;
   summary: string;
-  clientName: string;
   clientType: string;
   industry: string;
   problem: string;
@@ -318,8 +301,7 @@ export const caseStudies: CaseStudy[] = [
     badge: "Secure web platform",
     title: "Investor reporting portal for a regional private capital firm",
     summary:
-      "A regional private capital firm needed a more credible and efficient way to deliver reporting to investors and portfolio teams.",
-    clientName: "Private capital firm",
+      "The firm needed a better way to share reports with investors and internal teams.",
     clientType: "Regional private capital firm",
     industry: "Finance",
     problem:
@@ -354,8 +336,7 @@ export const caseStudies: CaseStudy[] = [
     badge: "Booking and care platform",
     title: "Patient booking and care coordination platform for a multi-site healthcare group",
     summary:
-      "A multi-site healthcare group needed a calmer digital front door for patients and staff.",
-    clientName: "Healthcare group",
+      "The healthcare group needed booking to feel easier for patients and less messy for staff.",
     clientType: "Multi-site healthcare provider",
     industry: "Healthcare",
     problem:
@@ -390,8 +371,7 @@ export const caseStudies: CaseStudy[] = [
     badge: "Operations and mobile suite",
     title: "Field operations suite for a logistics and service management business",
     summary:
-      "A field operations business needed one platform for dispatch, mobile task execution, and management visibility.",
-    clientName: "Field operations business",
+      "The company needed one place to handle dispatch, field work, and reporting.",
     clientType: "Logistics and field operations company",
     industry: "Operations",
     problem:
@@ -433,32 +413,32 @@ export const industries = [
   {
     title: "SaaS and technology",
     description:
-      "For product-led businesses that need sharper onboarding and stronger buyer trust.",
+      "For product companies that need clearer onboarding, a stronger product surface, or more buyer confidence.",
   },
   {
     title: "Healthcare and care operations",
     description:
-      "For patient, staff, and admin workflows where clarity and reassurance matter.",
+      "For patient, staff, and admin workflows where confusion creates stress and delays.",
   },
   {
     title: "Finance and regulated services",
     description:
-      "For firms that need interfaces and systems that feel credible in front of high-stakes users.",
+      "For firms that need clean, trustworthy systems in front of clients, partners, and regulated teams.",
   },
   {
     title: "Logistics and field operations",
     description:
-      "For distributed teams that depend on reliable workflows and real-time visibility.",
+      "For distributed teams that rely on reliable workflows, clear dispatching, and useful reporting.",
   },
   {
     title: "Commerce and booking-driven businesses",
     description:
-      "For brands where speed, usability, and conversion quality affect revenue.",
+      "For businesses where a clumsy booking or checkout flow directly hurts revenue.",
   },
   {
     title: "Professional services and internal ops",
     description:
-      "For companies that need stronger digital presence and cleaner internal systems.",
+      "For companies that need a better web presence, cleaner internal processes, or both.",
   },
 ];
 
@@ -466,48 +446,48 @@ export const engagementModels = [
   {
     title: "Launch",
     description:
-      "For MVPs, flagship websites, and new products that need clear positioning and a disciplined delivery path.",
+      "For new products, new websites, and first versions that need a clear scope and a sensible path to launch.",
   },
   {
     title: "Modernize",
     description:
-      "For redesigns, replatforms, and legacy systems that need stronger performance and a cleaner technical base.",
+      "For redesigns, rebuilds, and older systems that need better performance, cleaner UX, or a healthier codebase.",
   },
   {
     title: "Extend",
     description:
-      "For teams that need a premium partner to ship features, improve systems, and support growth with continuity.",
+      "For teams that already have something running and need help improving it without losing momentum.",
   },
 ];
 
 export const deliveryPrinciples = [
   "Senior product, design, and engineering oversight",
-  "Visible scope, milestones, and decision checkpoints",
-  "Accessible, performance-aware frontend implementation",
-  "Maintainable architecture and sensible documentation",
-  "Post-launch support and clear handover",
+  "Visible scope, milestones, and decision points",
+  "Accessible, performance-aware frontend work",
+  "Maintainable architecture and useful documentation",
+  "Post-launch support and a clean handover",
 ];
 
 export const aboutPrinciples = [
   {
-    title: "Clarity before momentum",
+    title: "Get clear before moving fast",
     description:
-      "Fast execution matters only when the team is building the right thing in the right order.",
+      "Speed only helps when the team is pointed at the right problem in the right order.",
   },
   {
-    title: "Calm communication",
+    title: "Keep communication calm",
     description:
-      "Regular updates, clear decisions, and visible progress throughout delivery.",
+      "Regular updates, direct decisions, and a delivery rhythm people can actually follow.",
   },
   {
-    title: "Quality at the source",
+    title: "Fix quality at the source",
     description:
-      "Good products are easier to support when design, code, content, and architecture act as one system.",
+      "Products are easier to support when design, code, content, and architecture are treated as one piece of work.",
   },
   {
-    title: "Long-term partnership thinking",
+    title: "Build for what comes next",
     description:
-      "The work is built to support growth, change, and future teams.",
+      "The work should still make sense when the product grows, the team changes, or the next phase starts.",
   },
 ];
 
@@ -529,27 +509,27 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "What kinds of projects are the best fit for Aksora Labs?",
     answer:
-      "Premium websites, customer products, internal tools, and digital systems that carry real business weight.",
+      "Websites, products, and internal tools that matter to the business and need more than a quick cosmetic pass.",
   },
   {
     question: "Do you work only with startups?",
     answer:
-      "No. Aksora Labs works with startups, SMEs, and larger organizations. The delivery model changes, but the standard stays high.",
+      "No. We work with startups, smaller companies, and larger teams. The way we work changes, but the bar does not.",
   },
   {
     question: "How do you reduce project risk?",
     answer:
-      "By removing ambiguity early, keeping scope visible, and treating architecture, UX, and implementation quality as one system.",
+      "By getting the scope clear early, keeping tradeoffs visible, and treating UX, architecture, and implementation as connected decisions.",
   },
   {
     question: "Can you work with our internal team?",
     answer:
-      "Yes. Aksora Labs can lead delivery, complement an internal team, or own a focused product stream.",
+      "Yes. We can lead the work, plug into an internal team, or take ownership of a focused stream.",
   },
   {
     question: "Do you handle strategy as well as execution?",
     answer:
-      "Yes. Strategy, scope definition, and technical direction are part of the engagement when they improve decision-making.",
+      "Yes. If strategy, scoping, or technical direction will help the project go better, we include it.",
   },
 ];
 
@@ -557,22 +537,22 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "Are services sold as separate line items or combined engagements?",
     answer:
-      "Most serious projects combine strategy, design, and engineering. The service list shows capability; the engagement is shaped around the outcome.",
+      "Most real projects mix strategy, design, and engineering. The list shows what we cover, but the work is shaped around the outcome you need.",
   },
   {
     question: "Can Aksora Labs improve an existing product instead of rebuilding it?",
     answer:
-      "Yes. Some engagements focus on redesign, modernization, stabilization, or extending a product that already has traction.",
+      "Yes. Some projects are about fixing, simplifying, or extending what is already there rather than starting over.",
   },
   {
     question: "Do you support CMS-driven websites?",
     answer:
-      "Yes. Website builds can include flexible content systems and reusable components for internal teams.",
+      "Yes. We can set up reusable sections and a content workflow your team can manage without calling a developer for every change.",
   },
   {
     question: "Can you handle backend and integration work too?",
     answer:
-      "Yes. API design, backend services, integrations, and data modeling are part of the scope when needed.",
+      "Yes. If the project needs APIs, backend services, integrations, or data modeling, we can cover that too.",
   },
 ];
 
@@ -580,22 +560,22 @@ export const processFaqs: FaqItem[] = [
   {
     question: "How much involvement is needed from our side?",
     answer:
-      "Enough to make good decisions quickly. The process is structured so client input stays focused.",
+      "Enough to make good decisions at the right moments. We keep your input focused so it does not turn into constant meetings.",
   },
   {
     question: "How do you handle changing requirements?",
     answer:
-      "By making tradeoffs explicit. When the scope changes, the impact on timeline, budget, and priorities is surfaced directly.",
+      "We call out the tradeoffs directly. If scope changes, we make the impact on time, budget, and priorities clear before moving ahead.",
   },
   {
     question: "How often do we get updates?",
     answer:
-      "The delivery rhythm uses regular progress visibility, milestone reviews, and clear decision checkpoints.",
+      "Regularly. You should always know what is moving, what needs a decision, and what could slow things down.",
   },
   {
     question: "Do you document what is built?",
     answer:
-      "Yes. Documentation and handover context are included so the product stays clear to internal teams and future partners.",
+      "Yes. We include the context and documentation needed so your team is not left guessing after handoff.",
   },
 ];
 
@@ -603,28 +583,28 @@ export const contactFaqs: FaqItem[] = [
   {
     question: "What is helpful to include in the inquiry?",
     answer:
-      "Share the business goal, users, current pain points, rough timeline, and any technical or stakeholder constraints.",
+      "The goal, the users, what is not working today, the rough timeline, and anything sensitive or technically awkward.",
   },
   {
     question: "Can we reach out before the scope is fully defined?",
     answer:
-      "Yes. Many useful conversations start when the team knows the problem but not the exact product shape.",
+      "Yes. A lot of useful projects start before the scope is fully nailed down.",
   },
   {
     question: "Do you work under NDA?",
     answer:
-      "Yes. Sensitive projects can start with confidentiality protections and tighter information handling.",
+      "Yes. If the work is sensitive, we can start with an NDA and handle details more tightly.",
   },
   {
     question: "Do you offer ongoing support after the first project?",
     answer:
-      "Yes. Aksora Labs can continue as a long-term product, design, and engineering partner.",
+      "Yes. We can keep supporting the product after launch if that is useful for your team.",
   },
 ];
 
 export const footerCredibility = [
-  "Senior-led delivery",
-  "Accessibility-minded implementation",
-  "Performance-conscious frontend",
-  "Long-term maintainability",
+  "Senior-led work",
+  "Accessibility in the build",
+  "Performance handled early",
+  "Code that stays maintainable",
 ];

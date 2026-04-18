@@ -33,14 +33,11 @@ export function Header() {
   const navLinkClassName =
     "nav-link-motion text-[0.92rem] font-semibold tracking-[0.04em] text-white/74 transition hover:text-white";
 
-  const ctaClassName =
-    "hidden lg:inline-flex border-white/18 bg-white/10 text-white hover:border-white hover:bg-white hover:text-slate-950";
-
   return (
     <header className={`sticky top-0 z-50 backdrop-blur-xl ${shellClassName}`}>
       <div className="border-b border-[var(--accent-strong)] bg-[var(--accent)] text-white">
-        <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-2 px-5 py-2 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <p className="text-sm leading-6 text-white/90">{announcementBar.text}</p>
+        <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-1.5 px-4 py-2 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+          <p className="text-sm leading-5 text-white/90 sm:leading-6">{announcementBar.text}</p>
           <Link
             href={announcementBar.ctaHref}
             className="motion-link-inline text-sm font-semibold underline underline-offset-4"
@@ -49,7 +46,7 @@ export function Header() {
           </Link>
         </div>
       </div>
-      <div className="mx-auto flex w-full max-w-[1760px] items-center justify-between px-5 py-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1760px] items-center justify-between gap-3 px-4 py-3.5 sm:px-6 lg:px-10">
         <Logo inverse />
         <nav className="hidden items-center gap-7 lg:flex">
           {mainNav.map((item) => (
@@ -58,10 +55,12 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <ButtonLink href="/contact" className={ctaClassName}>
-            Book a Call
-          </ButtonLink>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="hidden md:flex">
+            <ButtonLink href="/contact" variant="inverse">
+              Book a Call
+            </ButtonLink>
+          </div>
           <MobileNav inverse />
         </div>
       </div>

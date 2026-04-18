@@ -110,7 +110,7 @@ export default function OpenGraphImage() {
               fontWeight: 700,
             }}
           >
-            Website and application development for organizations that need to look stronger online.
+            Websites, apps, and internal tools built with clear thinking.
           </div>
           <div
             style={{
@@ -121,8 +121,8 @@ export default function OpenGraphImage() {
             }}
           >
             Aksora Labs plans, designs, and engineers websites, applications,
-            mobile products, and internal systems for teams that care about
-            clarity, trust, and long-term quality.
+            mobile products, and internal systems for teams that need useful
+            work and solid execution.
           </div>
         </div>
         <div

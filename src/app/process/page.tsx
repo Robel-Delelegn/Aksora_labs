@@ -8,12 +8,13 @@ import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SectionShell } from "@/components/site/section-shell";
 import { buildMetadata } from "@/lib/metadata";
+import { siteImages } from "@/lib/site-images";
 import { processFaqs, processSteps } from "@/lib/site-data";
 
 export const metadata = buildMetadata({
   title: "Process | Aksora Labs",
   description:
-    "See how Aksora Labs scopes, designs, engineers, launches, and supports premium digital products.",
+    "See how Aksora Labs scopes, designs, builds, launches, and supports digital products.",
   path: "/process",
 });
 
@@ -25,16 +26,16 @@ export default function ProcessPage() {
     description: step.description,
     imageSrc:
       index === 0
-        ? "/images/strategy-wall-editorial-v1.png"
+        ? siteImages.process.steps.discovery
         : index === 1
-          ? "/images/process-artifacts-editorial-v1.png"
+          ? siteImages.process.steps.shaping
           : index === 2
-            ? "/images/service-website-editorial-v1.png"
+            ? siteImages.process.steps.design
             : index === 3
-              ? "/images/service-systems-editorial-v1.png"
+              ? siteImages.process.steps.build
               : index === 4
-                ? "/images/operations-control-editorial-v1.png"
-                : "/images/editorial-banner-studio-v1.png",
+                ? siteImages.process.steps.launch
+                : siteImages.process.steps.support,
     imageAlt: step.title,
     href: "/contact",
     linkLabel: "Discuss the process",
@@ -46,14 +47,14 @@ export default function ProcessPage() {
       <SectionShell className="pt-8 sm:pt-12">
         <PageHero
           eyebrow="Process"
-          title="A delivery model designed to keep clarity high and waste low."
-          description="A clear delivery model that keeps the work easy to steer, review, and launch well."
+          title="A process built to keep the work clear and the surprises smaller."
+          description="You should always know where the project stands, what needs a decision, and what happens next."
           badges={["Scope", "Design", "Build", "Launch"]}
           tone="dark"
           stageVariant="process"
-          mediaSrc="/images/process-artifacts-editorial-v1.png"
+          mediaSrc={siteImages.process.hero}
           mediaAlt="Product planning artifacts and wireframes"
-          mediaNote="Clear scope, visible decisions, and disciplined delivery."
+          mediaNote="Clear scope, regular check-ins, and careful delivery."
         />
       </SectionShell>
 
@@ -61,8 +62,8 @@ export default function ProcessPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Six Steps"
-            title="From first diagnosis to post-launch support."
-            description="Each step exists to remove a specific kind of project risk."
+            title="From early conversations to support after launch."
+            description="Each step is there to reduce a specific kind of risk."
             tone="light"
           />
         </div>
@@ -81,7 +82,7 @@ export default function ProcessPage() {
         <div className="border-t border-white/10 pt-6">
           <SectionHeading
             eyebrow="Operating Rhythm"
-            title="How the engagement stays calm."
+            title="How the project stays steady."
             tone="light"
           />
         </div>
@@ -90,19 +91,19 @@ export default function ProcessPage() {
           {[
             {
               title: "Weekly visibility",
-              body: "Progress, decisions, and risk stay easy to follow.",
+              body: "You can see progress, decisions, and risk without chasing for updates.",
             },
             {
               title: "Focused client input",
-              body: "Stakeholder time is used where it changes the outcome.",
+              body: "We ask for stakeholder time where it changes the outcome, not out of habit.",
             },
             {
               title: "Quality checkpoints",
-              body: "UX and engineering are reviewed before small issues compound.",
+              body: "UX and engineering are reviewed before small issues pile into bigger ones.",
             },
             {
               title: "Clean handover",
-              body: "Documentation and context make the next phase easier to run.",
+              body: "Documentation and context make the next phase easier for your team to run.",
             },
           ].map((item) => (
             <article
@@ -124,8 +125,8 @@ export default function ProcessPage() {
         <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
           <SectionHeading
             eyebrow="FAQ"
-            title="Process questions, handled directly."
-            description="Clear answers on rhythm, input, and documentation."
+            title="Process questions, answered directly."
+            description="Clear answers on timing, input, and documentation."
             tone="light"
           />
           <FaqList items={processFaqs} tone="dark" />
@@ -135,15 +136,15 @@ export default function ProcessPage() {
       <SectionShell className="pb-8 pt-24">
         <CtaSection
           eyebrow="Start Well"
-          title="A clear process makes delivery easier to trust."
-          description="Start with the right structure, cadence, and decision points from day one."
-          imageSrc="/images/process-artifacts-editorial-v1.png"
+          title="Good delivery starts with a process people can actually follow."
+          description="Clear timing, clear decisions, and less drift from day one."
+          imageSrc={siteImages.process.cta}
           imageAlt="Product process and planning materials"
           stageVariant="process"
           points={[
-            "Reduce ambiguity before budget is committed",
-            "Set a stronger cadence from day one",
-            "Launch with better control",
+            "Reduce ambiguity before the budget is committed",
+            "Set a working rhythm early",
+            "Launch with fewer surprises",
           ]}
         />
       </SectionShell>
